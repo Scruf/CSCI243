@@ -1,4 +1,4 @@
-/// file: warning.c
+_s/// file: warning.c
 /// description: faulty code example that needs fixing.
 /// @author RIT CS Dept.
 

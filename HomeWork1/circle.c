@@ -8,13 +8,13 @@
 #include "circle.h"
 
 /// @return the area of a circle of the given radius.
-double getAreas(int radius) {
-    double temp = radius;
-    return M_PI * temp * temp;
+float getArea(int radius) {
+
+    return M_PI * radius * radius;
 }
 
 /// @return the circumference of a circle of the given radius.
-double getCircumference(int radius) {
+float getCircumference(int radius) {
 
     return 2.0* M_PI * radius;
 }

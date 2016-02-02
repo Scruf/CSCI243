@@ -10,17 +10,17 @@
 
 void compute(int radius) {
 
-    printf("Area of circle with radius %f: %f\n",
-           radius, getAreas(radius));
+    printf("Area of circle with radius %d: %f\n",
+           radius, getArea(radius));
     printf("Circumference of circle with radius %d: %f\n",
            radius, getCircumference(radius));
 }
 
 /// main program uses the circle module.
 int main() {
-    compute(1.0);
-    compute(5.0);
-    compute(10.0);
+    compute(1);
+    compute(5);
+    compute(10);
     return 0;
 
 }
