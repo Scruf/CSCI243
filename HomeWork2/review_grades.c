@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "stats.h"
 #include<ctype.h>
+
 int str_to_int( char str_score[] ) {
 
    int value = 0;

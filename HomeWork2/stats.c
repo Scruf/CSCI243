@@ -1,4 +1,5 @@
 #include "stats.h"
+#include <math.h>
 double average(int count,int scores[]){
   int temp=0;
   for(int i=0;i<count;i++){
@@ -8,11 +9,16 @@ double average(int count,int scores[]){
   return temp/av;
 }
 double std_dev(int count,int scores[],double mean){
-  int sum=0;
+  double sum=0.0;
   for(int i=0;i<count;i++){
-    sum += (mean-scores[i])*(mean-scores[i]);
+    if(scores[i]!=0){
+    double res = scores[i]-mean;
+    sum+=res*res;
+    }
   }
-  printf("%d\n",sum );
+  int av = count - 2;
 
-  return sum/count;
+  sum/=av;
+  printf("The value of the sum is %f\n",sum );
+  return sqrt(sum);
 }
