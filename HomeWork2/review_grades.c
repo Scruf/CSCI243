@@ -17,16 +17,19 @@ int str_to_int( char str_score[] ) {
    return value;
 }
 int main(int argc, char *argv[]) {
-  const int* scores[argc];
+  int population = argc - 1;
+  int result[argc];
   int current=1;
   for(int i=0;i<argc;i++){
-    int digit = str_to_int(argv[++i]);
-    scores[i]=digit;
-    current++;
+    if(current<argc){
+      int digit = str_to_int(argv[current]);
+      result[i]=digit;
+      current++;
+    }
   }
-  int population = argc - 1;
-  double average_score = average(population,scores);
-  printf("%f\n",average_score );
+  double average_score = average(argc,result);
+  double mean_score = std_dev(argc,result,average_score);
+  printf("%f\n",mean_score );
 
 
   return 0;
