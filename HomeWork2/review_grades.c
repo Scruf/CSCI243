@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "stats.h"
 #include<ctype.h>
-
+#include <stdlib.h>
+#include <math.h>
 int str_to_int( char str_score[] ) {
 
    int value = 0;
@@ -30,8 +31,15 @@ int main(int argc, char *argv[]) {
   }
   double average_score = average(argc,result);
   double mean_score = std_dev(argc,result,average_score);
-  printf("%f\n",mean_score );
-
-
+  printf("population: %d\n",population);
+  for(int i=0;i<argc;i++){
+    if(result[i]!=0)
+      printf("%d ",result[i]);
+  }
+  printf("\n");
+  printf("mean: %f\n",average_score );
+  printf("std deviation: %f\n",mean_score);
   return 0;
+
+
 }

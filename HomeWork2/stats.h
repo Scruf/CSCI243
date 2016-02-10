@@ -14,13 +14,13 @@
 /// TODO write a full docstring for average, including @params and @return
 #ifndef STATS_H
 #define STATS_H
-double average( int count, int scores[] ) ;
+double average( int count,const int scores[] ) ;
 
 /// TODO write a full docstring for std_dev
 
-double std_dev( int count,int scores[], double mean ) ;
+double std_dev( int count,const int scores[], double mean ) ;
 //
 // /// TODO write a full docstring for histogram
 //
-// void histogram( int count, const int scores[] ) ;
+void histogram( int count, const int scores[] ) ;
 #endif
