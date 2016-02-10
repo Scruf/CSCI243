@@ -1,0 +1,47 @@
+commit d2c9a961a6287ad8c1ee85acdbb47ef8a54fc814
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Feb 9 16:18:27 2016 -0800
+
+    historgram and str_dev finished
+
+commit 65a38dddc3bf35e63839d37ef1d2e1a61faf8739
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 8 16:30:07 2016 -0800
+
+    std_dev method completed
+
+commit 41f40e90308a51eeaaaedef48ce31a70c3a69a92
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 8 16:08:18 2016 -0800
+
+     Average and std_dev added
+
+commit 10740f026c8bdac9669f59abecc41ba365b796a2
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 8 15:20:54 2016 -0800
+
+    Average function implemented
+
+commit 6c36d9a1d97e5a385b538cfb501cac3d9d8f3ba8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Feb 7 13:36:20 2016 -0800
+
+    Initial commit of a second C homework
+
+commit 2ebf865bee4249983beaf986510e60d9f5d2e48a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 1 19:59:04 2016 -0800
+
+    Final commit
+
+commit d67997f6ffd0433c0323494a6f73be6a32b2b84b
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 1 19:18:43 2016 -0800
+
+    Printing for even numbers are finished and tested
+
+commit f854ac2c82c6a581699f2f1b6009ab2053e81d1a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Jan 31 15:36:42 2016 -0800
+
+    Initial commit of C assignments

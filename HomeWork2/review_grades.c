@@ -39,6 +39,7 @@ int main(int argc, char *argv[]) {
   printf("\n");
   printf("mean: %f\n",average_score );
   printf("std deviation: %f\n",mean_score);
+  histogram(population,result);
   return 0;
 
 
