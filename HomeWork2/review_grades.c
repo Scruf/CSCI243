@@ -19,6 +19,14 @@ int str_to_int( char str_score[] ) {
    return value;
 }
 int main(int argc, char *argv[]) {
+   if (argc < 2) {
+		printf("usage: review_grades score1 [score2 ...]\n");
+		printf("note: score values are assumed to be non - negative.\n");
+
+		getchar();
+		getchar();
+		exit(-1);
+	}
   int population = argc - 1;
   int result[argc];
   int current=1;
