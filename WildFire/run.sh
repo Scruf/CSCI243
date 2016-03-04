@@ -1,2 +1,2 @@
 gcc  main.c -lm  -o main
-./main -p44 19 23 98 11
+./main -p4 19 23 98 11
