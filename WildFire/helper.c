@@ -91,9 +91,7 @@ int check_pn_option(char arr[]){
                 return 1;
         }
 }
-unsigned int round_num(unsigned int x,unsigned int y){
-        return (x + (y / 2)) / y;
-}
+
 void print (int size, char arr[size][size]){
         for(int i=0; i<size; i++) {
                 for(int j=0; j<size; j++) {
