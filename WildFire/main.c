@@ -2,6 +2,11 @@
 #include<ctype.h>
 #include <stdlib.h>
 #include <string.h>
+void populate_forst(int row,char arr[row][row],char tree){
+  for(int i=0;i<sizeof(arr[0]);i++)
+    for(int j=0;j<sizeof(arr[0]);j++)
+      arr[i][j]=tree;
+}
 int check_pn_option(char arr[]){
   //check whether the first parameter is minus
   if(arr[0]!='-'){
@@ -150,14 +155,10 @@ int main(int argc, char *argv[]){
     char forest[size][size];
 
 
-    for(int i=0;i<size;i++)
-    {
-      for(int j=0;j<size;j++)
-      {
-        forest[i][j]='Y';
-      }
-      printf("\n");
-    }
+    if(treeDensity==0)
+      populate_forst(sizeof(forest[0]),forest,' ');
+    else
+      populate_forst(sizeof(forest[0]),forest,'Y');
     for(int i=0;i<size;i++)
     {
       for(int j=0;j<size;j++)
