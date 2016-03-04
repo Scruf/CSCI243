@@ -56,3 +56,38 @@ int spread(int row,int col, char forest [row][col],double probability){
                 return rand()%101 < probability ? 1 : 0;
         }
 }
+
+void apply_burn(int size,char forest[size][size],int arguments,int changes,int probability,int density,int proportion){
+  int amount_of_changes = 0,cycles=0;
+  if (arguments==5){
+
+  print(size,forest);
+    while(count_trees(size,forest)>0){
+
+        for(int i=0;i<size;i++){
+          for(int j=0;j<size;j++){
+            if(forest[i][j]=='*' && rand()%101<probability){
+              forest[i][j]=' ';
+              changes++;
+            }
+            if(spread(i,j,forest,probability)){
+              forest[i][j]='*';
+              changes++;
+            }
+          }
+        }
+        cycles++;
+        amount_of_changes+=changes;
+        print(size,forest);
+        printf("cycles %i size %i probability %.2f density %.2f proportion %.2f changes %i \n", cycles, size, probability/100, density/100, proportion/100, changes);
+    }
+
+  }
+}
+int main(void){
+  char arr[10][10];
+  init_forest(10,arr);
+
+
+  apply_burn(10,arr,5,0,50,50,50);
+}

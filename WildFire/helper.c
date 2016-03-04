@@ -57,6 +57,16 @@ int count_trees(int size,char arr[size][size]){
         }
         return _burned_trees;
 }
+int count_dead(int size,char arr[size][size]){
+  int counter = 0;
+  for(int i=0;i<size;i++){
+    for(int j=0;j<size;j++){
+      if(arr[i][j]==' ')
+        counter++;
+    }
+  }
+  return counter;
+}
 int check_pn_option(char arr[]){
         //check whether the first parameter is minus
         if(arr[0]!='-') {
