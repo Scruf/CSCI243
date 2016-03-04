@@ -54,41 +54,117 @@ int str_to_int( char str_score[] ) {
 }
 
 int main(int argc, char *argv[]){
-  char pN [sizeof(argv[1])];
-  int size=0,probability=0,treeDensity=0,proportionBurning=0;
-      if(argc<2){
+  char pN_option [sizeof(argv[1])];
+  int size=0,probability=0,treeDensity=0,proportionBurning=0,count=0,number_cycles=0,number_changes=0;
+  float _probability=0.0,_tree_density=0.0,initial_burning=0.0;
+//if the amount of arguments is invalid than the progtram will display an error
+      if(argc<5 || argc>6){
         printf("usage: wildfire [-pN] size probability treeDensity proportionBurning\n");
         printf("The -pN option tells the simulation to print N cycles and stop.\n");
         printf("The probability is the probability a tree will catch fire.");
+        exit(0);
     }
+//if ammount of arguments is 6 than pN option was present
+      if(argc==6){
+        strcpy(pN_option,argv[1]);
+        int flag =check_pn_option(pN_option);
+        if (flag==0){
+            printf("The -pN option was invalid.\n" );
+            exit(0);
+        }
 
-      if(argc>4){
-        strcpy(pN,argv[1]);
-        int flag =check_pn_option(pN);
-        if (flag==0)
-          printf("The -pN option was invalid.\n" );
-        if(pN[2]=='-')
+        if(pN_option[2]=='-'){
           printf("The -pN option was negative.\n" );
-        size = str_to_int(argv[2]);
-        if(size>40 || size<=4)
-          printf("The size (X) must be an integer in [5...40].\n");
-        probability = str_to_int(argv[3]);
-        if(probability<0 || probability>101)
-          printf("The probability (X) must be an integer in [0...100].\n");
-        treeDensity = str_to_int(argv[4]);
-        if(treeDensity<0 || treeDensity>101)
-          printf("The density (X) must be an integer in [0...100].\n" );
-        proportionBurning = str_to_int(argv[5]);
-        if(proportionBurning<0 || proportionBurning>101)
+          exit(0);
+        }else{
+          number_cycles=get_pN(pN_option);
+        }
+
+          size = str_to_int(argv[2]);
+          probability = str_to_int(argv[3]);
+          treeDensity = str_to_int(argv[4]);
+          proportionBurning = str_to_int(argv[5]);
+
+        if(size>40 || size<=4){
+            printf("The size (X) must be an integer in [5...40].\n");
+            exit(0);
+        }
+
+
+
+        if(probability<0 || probability>101){
+            printf("The probability (X) must be an integer in [0...100].\n");
+            exit(0);
+        }
+
+
+
+        if(treeDensity<0 || treeDensity>101){
+            printf("The density (X) must be an integer in [0...100].\n" );
+            exit(0);
+        }
+
+
+        if(proportionBurning<0 || proportionBurning>101){
           printf("The proportion (X) must be an integer in [0...100].\n" );
-        printf("%d\n",get_pN(pN));
-      }
-      else{
-        size = str_to_int(argv[2]);
-        probability = str_to_int(argv[3]);
-        treeDensity = str_to_int(argv[4]);
-        proportionBurning = str_to_int(argv[5]);
+            exit(0);
+          }
+
+
+
       }
 
+    if(argc==5){
+      size = str_to_int(argv[2]);
+      probability = str_to_int(argv[3]);
+      treeDensity = str_to_int(argv[4]);
+      proportionBurning = str_to_int(argv[5]);
+      if(size>40 || size<=4){
+          printf("The size (X) must be an integer in [5...40].\n");
+          exit(0);
+      }
+
+
+
+      if(probability<0 || probability>101){
+          printf("The probability (X) must be an integer in [0...100].\n");
+          exit(0);
+      }
+
+
+
+      if(treeDensity<0 || treeDensity>101){
+          printf("The density (X) must be an integer in [0...100].\n" );
+          exit(0);
+      }
+
+
+      if(proportionBurning<0 || proportionBurning>101){
+        printf("The proportion (X) must be an integer in [0...100].\n" );
+          exit(0);
+        }
+    }
+    _probability = ((float)probability)/100;
+    _tree_density = ((float)treeDensity)/100;
+    initial_burning = ((float)proportionBurning)/100;
+    char forest[size][size];
+
+
+    for(int i=0;i<size;i++)
+    {
+      for(int j=0;j<size;j++)
+      {
+        forest[i][j]='Y';
+      }
+      printf("\n");
+    }
+    for(int i=0;i<size;i++)
+    {
+      for(int j=0;j<size;j++)
+      {
+        printf("%c",forest[i][j]);
+      }
+      printf("\n");
+    }
 
   }
