@@ -67,6 +67,9 @@ int count_dead(int size,char arr[size][size]){
   }
   return counter;
 }
+int square(int s){
+  return s*s;
+}
 int check_pn_option(char arr[]){
         //check whether the first parameter is minus
         if(arr[0]!='-') {
