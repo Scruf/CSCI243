@@ -14,8 +14,8 @@ My login ID is:		ek5442
 What is the status of the program?
 
 Program runs and counts the changes but its not updating the forest correctly
-
-
+I think i miss implemented something
+or its probably broken
 
 ============= PROGRAM USAGE AND OPTIONS ==
 

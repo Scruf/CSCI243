@@ -1,3 +1,12 @@
+/*
+===========================================================================
+ Name        : Project1_Wildfire.c
+ Author      : Egor Kozitski
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Forest fire simulation
+ ============================================================================
+ */
 #ifndef SHIFLET_H
 #define SHIFLET_H
 void init_forest(int size,char forest[size][size]);

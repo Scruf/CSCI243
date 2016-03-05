@@ -1,3 +1,13 @@
+/*
+===========================================================================
+ Name        : Project1_Wildfire.c
+ Author      : Egor Kozitski
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Forest fire simulation
+ ============================================================================
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
