@@ -37,16 +37,7 @@ int get_pn_option(char arr[]){
         }
         return value;
 }
-int count_changes(int size,char arr1[size][size], char arr2[size][size]){
-        int counter = 0;
-        for(int i=0; i<size; i++) {
-                for(int j=0; j<size; j++) {
-                        if(arr1[i][j]!=arr2[i][j])
-                                counter++;
-                }
-        }
-        return counter;
-}
+
 int count_trees(int size,char arr[size][size]){
         int _burned_trees = 0;
         for(int i=0; i<size; i++) {
@@ -57,16 +48,7 @@ int count_trees(int size,char arr[size][size]){
         }
         return _burned_trees;
 }
-int count_dead(int size,char arr[size][size]){
-  int counter = 0;
-  for(int i=0;i<size;i++){
-    for(int j=0;j<size;j++){
-      if(arr[i][j]==' ')
-        counter++;
-    }
-  }
-  return counter;
-}
+
 int square(int s){
   return s*s;
 }

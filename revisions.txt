@@ -1,0 +1,144 @@
+commit 5eb411d5da955ed2dfd3e2fd27373faf7e7792c5
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Fri Mar 4 14:17:00 2016 -0800
+
+    I tried
+
+commit 51416d846ab80c2e8ccb29abb07e8a61b81dc353
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Fri Mar 4 12:20:24 2016 -0800
+
+    Infinite loop bug
+
+commit f03f52f6354aa3884b2ea683cc9b2d41a77bc737
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Fri Mar 4 11:51:10 2016 -0800
+
+    partial implementation
+
+commit d97ebd005dad1391caad50b3dfeb6aab2d5862bf
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Fri Mar 4 10:31:17 2016 -0800
+
+    Helpwer method implemented
+
+commit 3b7111bd11744586c10c11ba87036a0e9590abcc
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Mar 3 19:35:45 2016 -0800
+
+    Unfinished Business
+
+commit 57346b3864126eb3c3ab84d891304a8b18ccd50b
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Mar 3 17:39:35 2016 -0800
+
+    apply burning trees implemented
+
+commit 15102a97026ea6331a8a53442664d5de9ba0b15a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Mar 3 17:02:46 2016 -0800
+
+    Forest Population bug fixed
+
+commit 5a18cfb8307e3bb441b5aed1945dc578351f49b6
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Mar 3 16:35:15 2016 -0800
+
+    Forest populated
+
+commit d5fd3ecadbf4957e1b3b9cafdc4bf76c277659d8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Mar 3 15:12:43 2016 -0800
+
+    Added test file
+
+commit 7460b4e1fa3db61f9f2f17081373bc27f76ee6a6
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 29 16:45:27 2016 -0800
+
+    Command Line arguments finished
+
+commit c262feaf82eabf2f9522a1a4a72bc48d06453ea2
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Feb 28 18:37:31 2016 -0800
+
+    Phase 1 completed
+
+commit a7c2504b146827116dd6ab7275da2335505419ba
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 15 15:58:47 2016 -0800
+
+    Phase 2 asssignment finished
+
+commit 1c34bd91b6b486d9cbc6083084fe2ef553b0bc8f
+Merge: 790dd7c a7f0dda
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 15 15:39:53 2016 -0800
+
+    Merge branch 'master' of https://github.com/Scruf/CSCI243
+
+commit 790dd7cb36ba05a944d93bd1a8d0d1620b350c71
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 15 15:39:19 2016 -0800
+
+    Act1 completed and tested
+
+commit a7f0dda08c86ae69734a55e4aa3a2810486d765f
+Author: Egor <ekozitski@hotmail.com>
+Date:   Tue Feb 9 19:28:09 2016 -0500
+
+    Update review_grades.c
+
+commit ca425ea84b639662af8f5e97697dc49e1984279f
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Feb 9 16:22:40 2016 -0800
+
+    Final commit
+
+commit d2c9a961a6287ad8c1ee85acdbb47ef8a54fc814
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Feb 9 16:18:27 2016 -0800
+
+    historgram and str_dev finished
+
+commit 65a38dddc3bf35e63839d37ef1d2e1a61faf8739
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 8 16:30:07 2016 -0800
+
+    std_dev method completed
+
+commit 41f40e90308a51eeaaaedef48ce31a70c3a69a92
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 8 16:08:18 2016 -0800
+
+     Average and std_dev added
+
+commit 10740f026c8bdac9669f59abecc41ba365b796a2
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 8 15:20:54 2016 -0800
+
+    Average function implemented
+
+commit 6c36d9a1d97e5a385b538cfb501cac3d9d8f3ba8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Feb 7 13:36:20 2016 -0800
+
+    Initial commit of a second C homework
+
+commit 2ebf865bee4249983beaf986510e60d9f5d2e48a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 1 19:59:04 2016 -0800
+
+    Final commit
+
+commit d67997f6ffd0433c0323494a6f73be6a32b2b84b
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Feb 1 19:18:43 2016 -0800
+
+    Printing for even numbers are finished and tested
+
+commit f854ac2c82c6a581699f2f1b6009ab2053e81d1a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Jan 31 15:36:42 2016 -0800
+
+    Initial commit of C assignments

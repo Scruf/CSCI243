@@ -1,0 +1,53 @@
+ssignment Report
+Assignment name is: Wildfire
+My name is: 			Egor Kozitski
+My login ID is:		ek5442
+
+[insert your answers after the question and add more lines as needed.]
+
+	[MAKE YOUR ANSWERS SHORT AND TO THE POINT. BULLET POINTS ARE GOOD.]
+
+	[USE PLAIN TEXT]
+
+============= PROGRAM STATUS ==============
+
+What is the status of the program?
+
+Program runs and counts the changes but its not updating the forest correctly
+
+
+
+============= PROGRAM USAGE AND OPTIONS ==
+
+If you implemented anything special, describe your experiment results here.
+
+I create a bash script to ease my life
+
+
+
+
+
+============= GENERAL PROJECT FEEDBACK ==============
+
+What did I learn?
+I learned that its better to start working on the projects early instead of postponing it
+
+
+
+What was easy about this assignment?
+apply spread was easy, counting neighbors was very dfficult
+
+
+
+What gave you problems or troubles?
+
+Counting neighbors and spread
+
+
+What would you like the instructor to do to improve this assignment?
+
+
+Its a good assignment
+
+What would you have liked to do in this assignment?
+Try to use gui
