@@ -1,0 +1,225 @@
+Homework 4, Activity 1:  Learning to use Valgrind
+
+Name: <<< Egor Kozitski: ek5442 >>>
+
+Instructions
+------------
+
+These questions deal with the movie program found in movie.c, mtime.c and
+movietest.c.  Compile these files as indicated in the assignment writeup.
+
+We have included a compiled copy of the solution "goodmovietest" for you
+to run to see how the program should behave.
+
+The nature of these activities will have you switching back and forth
+between running valgrind and looking at code. You may find it helpful to
+have a second shell window open; run valgrind in the first window, and 
+execute other commands (such as 'more', or an editor) in the second window.
+
+Questions
+---------
+
+1. Run "movietest" and observe its behavior
+
+   a. When movietest is run, what error is reported?
+
+******************** Your answer below (5 points) 
+********************
+ Error in `./movietest': double free or corruption (out): 0x0000000001af6020 
+***********************************************************
+
+   b. Is the behavior of movietest consistent, if you run it multiple
+      times (e.g. 5 times) does it result in the same error each time?
+
+******************** Your answer below (5 points)
+********************
+After running it five times the same error occured but the address was always different 
+
+***********************************************************
+
+   c. Explain what a "double free or corruption" error message likely
+      means. That is to say, when discussing dynamic memory management
+      what does "double free" mean and why is it a problem?
+
+******************** Your answer below (5 points)
+********************
+
+double free means that you are trying to free freed memory again by issuing malaoc 
+***********************************************************
+
+2. Use gdb to begin to investigate the error
+
+   a. Run movietest in gdb. Look at the backtrace. It should show
+      several frames of C library files followed by 2 frames in
+      the movietest application. Copy and paste the last two lines 
+      of the backtrace here:
+
+******************** Your answer below (5 points) ********************
+#6  0x0000000000400cb7 in movieDelete (m=0x6030c0) at movie.c:60
+#7  0x0000000000400b7e in main () at movietest.c:118
+
+**********************************************************
+
+   b. When the error occurs, what line of code was executing in 
+      movie.c?
+
+******************** Your answer below (5 points) ********************
+movie.c:60
+**********************************************************
+
+   c. When the error occurs, what line of code was executing in
+      movietest.c?
+
+******************** Your answer below (5 points) ********************
+
+movietest.c:118
+**********************************************************
+
+   d. Select the stack frame pertaining to movie.c and then run the 
+      "list" command to examine the source code around the line of 
+      code where the error occurred. Copy and paste the result of
+      running list here:
+
+******************** Your answer below (5 points) ********************
+Breakpoint 1, main () at movietest.c:60
+60          char *sglp = mtimeToString(glp) ;
+(gdb) list
+55          moviePlay( movie1, atime ) ;
+56          mstr = movieToString( movie1 ) ;
+57          printf( "After playing the movie... %s\n", mstr ) ;
+58
+59          mtime *glp = movieGetLastPlayed( movie1 ) ;
+60          char *sglp = mtimeToString(glp) ;
+61          director = movieGetDirector( movie1 ) ;
+62          title = movieGetTitle( movie1 ) ;
+63          printf( "The same movie referencing members is: %s by %s. Last played at: %s\n",
+64                   title, director, sglp ) ;
+
+**********************************************************
+      
+3. Run "movietest" using the valgrind command:
+      valgrind --leak-check=full movietest
+   Look at the summary information at the end of the valgrind output.
+
+   a. How many bytes of memory are reported lost?
+
+******************** Your answer below (5 points) ********************
+ 500 bytes in 12 blocks
+
+***********************************************************
+
+   b. How many bytes of memory are still in use when the program exited?
+
+******************** Your answer below (5 points) ********************
+500 byte
+***********************************************************
+
+   c. How many allocation and deallocation calls were made?
+
+******************** Your answer below (5 points) ********************
+59 allocations, and 49 frees
+***********************************************************
+
+4. The output from valgrind indicates many different errors, but most
+   are caused by the same statements in the program being executed
+   again and again.
+
+   a. List all the different types of errors reported by valgrind, and
+      how many times each occurred.  Consider only messages printed
+      before the summary of heap usage.
+
+******************** Your answer below (5 points) ********************
+invalid read size 1 = 22
+invalid write size 1 = 8
+invalid free() = 2
+***********************************************************
+
+   b. At what lines in the source file are the memory blocks being
+      allocated?
+
+******************** Your answer below (5 points) ********************
+movietest.c :43,76,82,91,107,108,79,83,86,94,52,56
+***********************************************************
+
+   c. At what lines in the source file are the invalid read and write
+      accesses to the memory blocks occurring?
+
+******************** Your answer below (5 points) ********************
+write: 82,91
+read: 83,82,86,91,92,94,95
+***********************************************************
+
+   d. Based on this information, what is the source of the invalid read
+      and write errors?
+
+******************** Your answer below (5 points) ********************
+moviecopy for invalid write, and movietostring invalid read!
+***********************************************************
+
+Given the knowledge gained from the previous question, correct these
+errors and then recompile and retest the program.  The invalid memory
+access errors should no longer occur.
+
+5. Run valgrind again. Notice that after the program output valgrind
+   reports two occurrences of "Invalid free()".
+
+   a. In what function do these errors occur, and how many times is
+      that function called from main()?
+
+******************** Your answer below (5 points) ********************
+movieDelete()
+movieDelete was called 6 times 
+***********************************************************
+
+   b. How many times is free() called from inside that function itself
+      (i.e., not from any other functions it calls)?
+
+******************** Your answer below (5 points) ********************
+free() called 2 times 
+***********************************************************
+
+   c. What fix is needed to eliminate the "Invalid free()" message?
+
+******************** Your answer below (5 points) ********************
+free(m)
+***********************************************************
+
+Make the fix you described, re-build and re-run the program.  The "Invalid
+free" errors should no longer appear.
+
+6. In the "HEAP SUMMARY" section, there are number of error reports
+   regarding lost blocks of memory.
+
+   a. In which functions were the calls to malloc() made which allocated
+      the blocks that were lost, and what data items were they allocating
+      space for?
+
+******************** Your answer below (5 points) ********************
+newmovie() malloc to allocate for a new movie 
+moviegetdirector(); malloc acllocate memory for a s trung 
+moviegettitle(); malloca allocate memory for a movie title
+moviecopy();mallo allocate memory for strcpy
+movietoString();malloc allocates string for the movie
+***********************************************************
+
+   b. Examine the code to determine what you need to change to fix each
+      of the problems. Explain your solution.
+
+******************** Your answer below (5 points) ********************
+call free(mstr) in the main , because if we call it in function it will not work.If its called in function we will return the memory cause if you free memory before, it will not return anything. When free(mstr)  main after it was  assigned, and used.
+we will use  free(m) in  moviedelete() because the memory was allocated but never freed . 
+In the  moviecopy() function we  changes the sizeof command in malloc to strlen.
+***********************************************************
+
+   c. The memory allocated by these functions is returned by them to
+      the calling function; this effectively transfers the responsiblity
+      for deallocating the memory to the caller as well.  Where is the
+      most logical place for this memory to be deallocated?
+
+******************** Your answer below (5 points) ********************
+After assignment 
+***********************************************************
+
+Make the necessary changes to the code to correct these final errors.
+At this point, if you did your work correctly, your program should run
+to completion with no memory management errors detected by valgrind.
