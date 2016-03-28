@@ -1,6 +1,6 @@
 // File: $Id: bst.h,v 1.3 2016/03/11 16:28:38 csci243 Exp $
 //
-// Binary Search Tree structure and function declarations 
+// Binary Search Tree structure and function declarations
 //
 // @author: sps
 // @author: rwd
@@ -10,21 +10,21 @@
 
 /// The definition of the tree structure
 typedef struct TreeNode {
-    int data ;                  // the data stored in the node
-    struct TreeNode * left ;     // node's left child
-    struct TreeNode * right ;    // node's right child
+        int data;               // the data stored in the node
+        struct TreeNode * left;  // node's left child
+        struct TreeNode * right; // node's right child
 } TreeNode;
 
 /// The three supported traversals
 typedef enum {
-    PREORDER,           // parent -> left -> right
-    INORDER,            // left -> parent -> right
-    POSTORDER           // left -> right -> parent
+        PREORDER,       // parent -> left -> right
+        INORDER,        // left -> parent -> right
+        POSTORDER       // left -> right -> parent
 } TraversalType;
 
 // FUNCTIONS STUDENTS ARE REQUIRED TO IMPLEMENT
 
-/// build_tree() 
+/// build_tree()
 ///     Dynamically build BST by allocating nodes on the heap.
 ///     The client passes the address of storage that will hold
 ///     the pointer to the root tree node. The function then
@@ -55,4 +55,3 @@ void traverse(const TreeNode* root, const TraversalType type);
 void cleanup_tree(TreeNode* root);
 
 #endif // BST_H
-
