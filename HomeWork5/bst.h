@@ -52,6 +52,6 @@ void traverse(const TreeNode* root, const TraversalType type);
 ///
 /// args -
 ///      root - the current root of the tree
-void cleanup_tree(TreeNode* root);
+// void cleanup_tree(TreeNode* root);
 
 #endif // BST_H

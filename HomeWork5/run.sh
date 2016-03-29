@@ -1,6 +1,6 @@
 gcc -c bst.c
 gcc -o bst bst.c
-./bst 1
+./bst 5
 echo " "
 ./bst -1
 echo " "
