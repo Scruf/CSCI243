@@ -1,3 +1,12 @@
+/*
+===========================================================================
+ Name        : bst.c
+ Author      : Egor Kozitski
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Binary Search Tree Implementation
+ ============================================================================
+ */
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
