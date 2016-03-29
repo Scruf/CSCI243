@@ -80,6 +80,13 @@ void traverse(const TreeNode* root, const TraversalType type){
 
         }
 }
+void cleanup_tree(TreeNode* root){
+  if(root!=0){
+    cleanup_tree((root)->left);
+    cleanup_tree((root)->right);
+    free(root);
+  }
+}
 int main(int argc, char *argv[]){
         if (argc<2) {
                 printf("Usage: bst #");
@@ -121,5 +128,6 @@ int main(int argc, char *argv[]){
         printf("\n");
         printf("Postorder traversal\n");
         traverse(root,POSTORDER);
+        cleanup_tree(root);
         return 0;
 }
