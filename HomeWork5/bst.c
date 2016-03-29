@@ -50,15 +50,35 @@ void build_tree(TreeNode** root, const int elements[], const int count){
 void traverse(const TreeNode* root, const TraversalType type){
 
         switch(type) {
+        case PREORDER:
+                if (root!=0) {
+                        printf("%d\n",(root)->data);
+                        traverse((root)->left,PREORDER);
+                        traverse((root)->right,PREORDER);
+                }
+                break;
         case INORDER:
-              if(root!=0){
-                traverse((root)->left,INORDER);
-                printf("%d\n",(root)->data);
-                traverse((root)->right,INORDER);
+                if(root!=0) {
+                        traverse((root)->left,INORDER);
+                        printf("%d\n",(root)->data);
+                        traverse((root)->right,INORDER);
 
-              }
+                }
+
+                break;
+        case POSTORDER:
+                if(root!=0) {
+                        traverse((root)->left,POSTORDER);
+                        traverse((root)->right,POSTORDER);
+                        printf("%d\n",(root)->data);
+                }
+                break;
+        default:
+                printf("Invalid option");
+                break;
+
+
         }
-
 }
 int main(int argc, char *argv[]){
         if (argc<2) {
@@ -93,7 +113,13 @@ int main(int argc, char *argv[]){
         }
         TreeNode *root= NULL;
         build_tree(&root,bst_array,number_of_elements);
+        printf("Preorder traversal\n");
+        traverse(root,PREORDER);
+        printf("\n");
         printf("Inorder traversal\n");
         traverse(root,INORDER);
+        printf("\n");
+        printf("Postorder traversal\n");
+        traverse(root,POSTORDER);
         return 0;
 }
