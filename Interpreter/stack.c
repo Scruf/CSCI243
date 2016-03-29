@@ -4,7 +4,7 @@
 
 
 void push(StackNode** stack, char* data){
-  StackNode *node  = makeStackNode(data, *stack);
+  StackNode* node  = makeStackNode(data, *stack);
   *stack = node;
 }
 char* top (StackNode* stack){
@@ -24,5 +24,8 @@ void pop(StackNode** stack){
   exit(-1);
 }
 int emptyStack(StackNode* stack){
-  return stack==0 ? -1 : 0;
+  if(stack==NULL){
+    return 1;
+  }
+  return 0;
 }

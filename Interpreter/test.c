@@ -1,6 +1,5 @@
 #include "stackNode.h"
 #include "stack.h"
-
 #include <stdlib.h>
 #include <stdio.h>
 
