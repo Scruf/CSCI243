@@ -19,3 +19,11 @@ int str_to_int( char str_score[] ) {
         }
         return value;
 }
+int check_if_double(char str[]){
+        for (int i=0; i<strlen(str)+1; i++) {
+                if (str[i]=='.') {
+                        return 1;
+                }
+        }
+        return 0;
+}

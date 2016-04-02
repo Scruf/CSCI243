@@ -18,16 +18,16 @@ int main(int argc,char* argv[]){
         dumpTable();
         char arr[MAX_LINE];
         printf("Enter postfix expressions (CTRL-D to exit): \n");
-        for(;;){
-          printf(">");
-          fgets(arr,MAX_LINE,stdin);
-          for(int j=0;j<strlen(arr)+1;j++){
-            if(arr[j]=='\n'){
-              arr[j]='\0';
-            }
-          }
-          parse(arr);
-          ParseError parse_error = getParserError();
+        for(;; ) {
+                printf(">");
+                fgets(arr,MAX_LINE,stdin);
+                for(int j=0; j<strlen(arr)+1; j++) {
+                        if(arr[j]=='\n') {
+                                arr[j]='\0';
+                        }
+                }
+                parse(arr);
+                ParseError parse_error = getParserError();
         }
         return 0;
 }

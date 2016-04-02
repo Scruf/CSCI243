@@ -16,20 +16,20 @@ void buildTable(char filename[]){
         int counter=0;
         if (!feof(file)) {
                 for(int i=0; i<MAX_SYMBOLS; i++) {
-                        char *token_type = (char *)calloc(1,1000);
-                        char *token_name = (char *)calloc(1,1000);
-                        char *token_value = (char *)calloc(1,1000);
-                        if(fscanf(file, "%s %s %s", token_type, token_name, token_value)!=3) {
+                        char *variable_type = (char *)calloc(1,1000);
+                        char *variable_name = (char *)calloc(1,1000);
+                        char *variable_value = (char *)calloc(1,1000);
+                        if(fscanf(file, "%s %s %s", variable_type, variable_name, variable_value)!=3) {
                                 printf("Invalid number of format o arguments");
                                 break;
                         }
                         else{
                                 if (strcmp(token_type,"int")==0) {
-                                        Symbol temp = createSymbol(TYPE_INT,token_name,token_value);
+                                        Symbol temp = createSymbol(TYPE_INT,variable_name,variable_value);
                                         symbol[counter] = temp;
                                 }
                                 if(strcmp(token_type,"double")==0) {
-                                        Symbol temp = createSymbol(TYPE_DOUBLE,token_name,token_value);
+                                        Symbol temp = createSymbol(TYPE_DOUBLE,variable_name,variable_value);
                                         symbol[counter]=temp;
                                 }
                         }
@@ -38,7 +38,7 @@ void buildTable(char filename[]){
         }
         number_of_symbols=counter;
         fclose(file);
-        
+
 }
 void dumpTable(void){
         printf("SYMBOL TABLE:\n");
