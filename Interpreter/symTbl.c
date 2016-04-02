@@ -1,4 +1,4 @@
-#include "symblTbl.h"
+#include "symTbl.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -8,37 +8,37 @@ static Symbol symbol[MAX_SYMBOLS];
 static Symbol createSymbol(Type type, char* varName, char* value);
 
 void buildTable(char filename[]){
-								FILE *file = fopen(filename,"r");
-								if (file==0) {
-																printf("Error loading symbol table]n");
-																exit(-1);
-								}
-								int counter=0;
-								if (feof(file)){
-									for(int i=0;i<MAX_SYMBOLS;i++){
-										char *token_type = (char *)calloc(1,1000);
-										char *token_name = (char *)calloc(1,1000);
-										char *token_value = (char *)calloc(1,1000);
-										if(fscanf(file, "%s %s %s", token_type, token_name, token_value)!=3) {
-																		printf("Invalid number of format o arguments");
-																		break;
-										}
-										else{
-																		if (strcmp(token_type,"int")==0) {
-																										Symbol temp = createSymbol(TYPE_INT,token_name,token_value);
-																										symbol[counter] = temp;
-																		}
-																		if(strcmp(token_type,"double")==0) {
-																										Symbol temp = createSymbol(TYPE_DOUBLE,token_name,token_value);
-																										symbol[counter]=temp;
-																		}
-										}
-										counter++;
-									}
-								}
-								number_of_symbols=counter;
-								fclose(file);
-								return;
+        FILE *file = fopen(filename,"r");
+        if (file==0) {
+                printf("Error loading symbol table]n");
+                exit(-1);
+        }
+        int counter=0;
+        if (!feof(file)) {
+                for(int i=0; i<MAX_SYMBOLS; i++) {
+                        char *token_type = (char *)calloc(1,1000);
+                        char *token_name = (char *)calloc(1,1000);
+                        char *token_value = (char *)calloc(1,1000);
+                        if(fscanf(file, "%s %s %s", token_type, token_name, token_value)!=3) {
+                                printf("Invalid number of format o arguments");
+                                break;
+                        }
+                        else{
+                                if (strcmp(token_type,"int")==0) {
+                                        Symbol temp = createSymbol(TYPE_INT,token_name,token_value);
+                                        symbol[counter] = temp;
+                                }
+                                if(strcmp(token_type,"double")==0) {
+                                        Symbol temp = createSymbol(TYPE_DOUBLE,token_name,token_value);
+                                        symbol[counter]=temp;
+                                }
+                        }
+                        counter++;
+                }
+        }
+        number_of_symbols=counter;
+        fclose(file);
+        
 }
 void dumpTable(void){
         printf("SYMBOL TABLE:\n");
