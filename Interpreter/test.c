@@ -4,14 +4,12 @@
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-        StackNode* stack = NULL;
-        push(&stack, "A");
-        push(&stack, "B");
-        push(&stack, "C");
-        while(emptyStack(stack) == 0) {
-                char* tk = top(stack);
-                printf("%s\n", tk);
-                pop(&stack);
-        }
+        int i = 0;
+        double d = 0;
+        char *token_type = (char *)malloc(sizeof(int)/2);
+
+        printf("Woo %lu \n",sizeof(token_type));
+        if (sizeof(token_type)==4)
+          printf("\n Your are looking at int\n");
         return 0;
 }
