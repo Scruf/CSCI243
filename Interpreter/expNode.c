@@ -17,47 +17,40 @@
  */
 
 ExpNode* makeExpNode(char token[],ExpNode*left, ExpNode* right){
-        ExpNode *current = (ExpNode *)calloc(1,sizeof(ExpNode)){
-                current->left = left;
-                current->right = right;
-                if (check_if_double(token)==1) {
-                        current->type = DOUBLE;
-                        current->value.value.dVal = atof(token);
-                }
-                int flag = 0;
-                for(int i=0; i<strrlen(token)+1; i++) {
-                        if (isdigit(token[i])==0) {
-                                flag = 1;
-                        }
-                }
-                if (flag==1) {
-                        current->type = INTEGER;
-                        curren->value.value.iVal = str_to_int(token);
-                }
-                switch(token) {
-                case ADD_OP_STR:
-                        current->type=ADD_OP;
-                        break;
-                case SUB_OP_STR:
-                        current->type = SUB_OP;
-                        break;
-                case MUL_OP_STR:
-                        current->type = MUL_OP;
-                        break;
-                case DIV_OP_STR:
-                        current->type = DIV_OP;
-                        break;
-                case MOD_OP_STR:
-                        current->type=MOD_OP;
-                        break;
-                case ASSIGN_OP_STR:
-                        current->type = ASSIGN_OP;
-                        break;
-                default:
-                        current->type = SYMBOL;
-                        strcpy(current->symbol,token);
-                        break;
-                }
-        }
-        return current;
+  ExpNode *current = (ExpNode *)calloc(1,sizeof(ExpNode));
+
+  current->left = left;
+  current->right = right;
+  if (check_if_double(token)==1) {
+          current->type = DOUBLE;
+          current->value.value.dVal = atof(token);
+  }
+  int flag = 0;
+  for(int i=0; i<strlen(token)+1; i++) {
+          if (isdigit(token[i])==0) {
+                  flag = 1;
+          }
+  }
+  if (flag==1) {
+          current->type = INTEGER;
+          current->value.value.iVal = str_to_int(token);
+  }
+
+  if(strcmp(token,ADD_OP_STR)==0)
+          current->type=ADD_OP;
+  else if(strcmp(token,SUB_OP_STR)==0)
+          current->type = SUB_OP;
+  else if(strcmp(token,MUL_OP_STR)==0)
+          current->type = MUL_OP;
+  else if(strcmp(token,DIV_OP_STR)==0)
+          current->type = DIV_OP;
+  else if(strcmp(token,MOD_OP_STR)==0)
+          current->type=MOD_OP;
+  else if(strcmp(token,ASSIGN_OP_STR)==0)
+          current->type = ASSIGN_OP;
+  else{
+          current->type = SYMBOL;
+          strcpy(current->symbol,token);
+  }
+  return current;
 }
