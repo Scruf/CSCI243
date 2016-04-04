@@ -26,19 +26,19 @@ void infixTree(ExpNode* node){
         infixTree(node->left);
         switch(node->type) {
         case ADD_OP:
-                printf(ADD_OP);
+                printf("+");
                 break;
         case SUB_OP:
-                printf(SUB_OP);
+                printf("-");
                 break;
         case MUL_OP:
-                printf(MUL_OP);
+                printf("*");
                 break;
         case DIV_OP:
-                printf(DIV_OP);
+                printf("/");
                 break;
         case ASSIGN_OP:
-                printf(ASSIGN_OP);
+                printf("=");
                 break;
         case MOD_OP:
                 printf(" %% ");
@@ -62,4 +62,18 @@ void parse(char exp[]){
                         printf("%f\n",val.value.dVal);
         }
         cleanupTree(root);
+}
+ParserError getParserError(void){
+  return parser_error;
+}
+void cleanupTree(ExpNode* node){
+  if(node==0){
+    return ;
+  }
+  else{
+    cleanupTree(node->left);
+    free(node->left);
+    cleanupTree(node->right);
+    free(node->right);
+  }
 }
