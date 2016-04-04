@@ -6,6 +6,7 @@
 #include <string.h>
 
 ParserError parser = NONE;
+Symbol createSymbol(Type type, char* varName, char* value);
 void infixTree(ExpNode* node){
         switch(node->type) {
         case DOUBLE:
@@ -64,16 +65,46 @@ void parse(char exp[]){
         cleanupTree(root);
 }
 ParserError getParserError(void){
-  return parser_error;
+        return parser_error;
 }
 void cleanupTree(ExpNode* node){
-  if(node==0){
-    return ;
-  }
-  else{
-    cleanupTree(node->left);
-    free(node->left);
-    cleanupTree(node->right);
-    free(node->right);
+        if(node==0) {
+                return;
+        }
+        else{
+                cleanupTree(node->left);
+                free(node->left);
+                cleanupTree(node->right);
+                free(node->right);
+        }
+}
+ExpNode* parserTree(char expr[]){
+  StackNode *stack = NULL;
+  char *tokens=NULL;
+  ExpNode *current;
+  char *str_to_copy = calloc(1,strlen(expr)+1);
+  char  temp_str = calloc(1,10);
+  memcpy(str_to_copy,expr,sizeof(strlen(expr+1)));
+}
+
+Value evalTree(ExpNode* node){
+  switch(node->type){
+    case INTEGER:
+      return node->value;
+      break;
+    case DOUBLE:
+      return node->value;
+      break;
+    case SYMBOL:
+    Symbol *symb;
+    if(symbol=lookupTable(node->symbol)){
+      return symbol->value;
+    break;
+    default:
+      parser_error = UNKNOWN_SYMBOL;
+      printf("Unknown symbol: %s\n",node->symbol);
+      return val;
+    break;
+    }
   }
 }
