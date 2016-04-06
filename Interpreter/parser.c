@@ -88,23 +88,9 @@ ExpNode* parserTree(char expr[]){
 }
 
 Value evalTree(ExpNode* node){
-  switch(node->type){
-    case INTEGER:
-      return node->value;
-      break;
-    case DOUBLE:
-      return node->value;
-      break;
-    case SYMBOL:
-    Symbol *symb;
-    if(symbol=lookupTable(node->symbol)){
-      return symbol->value;
-    break;
-    default:
-      parser_error = UNKNOWN_SYMBOL;
-      printf("Unknown symbol: %s\n",node->symbol);
-      return val;
-    break;
-    }
+  Value unknown;
+  if(node==0){
+    return TYPE_UNKNOWN;
+
   }
 }
