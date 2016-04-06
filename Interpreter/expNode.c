@@ -21,36 +21,59 @@ ExpNode* makeExpNode(char token[],ExpNode*left, ExpNode* right){
 
   current->left = left;
   current->right = right;
-  if (check_if_double(token)==1) {
-          current->type = DOUBLE;
-          current->value.value.dVal = atof(token);
-  }
-  int flag = 0;
-  for(int i=0; i<strlen(token)+1; i++) {
-          if (isdigit(token[i])==0) {
-                  flag = 1;
-          }
-  }
-  if (flag==1) {
-          current->type = INTEGER;
-          current->value.value.iVal = str_to_int(token);
+
+
+  for(int i=0;i<=strlen(token+1);i++){
+    if(token[i]=='.'){
+      current->type=DOUBLE;
+      current->value.type=TYPE_DOUBLE;
+      current->value.value.dVal = atof(token);
+      return current;
+    }
   }
 
-  if(strcmp(token,ADD_OP_STR)==0)
-          current->type=ADD_OP;
-  else if(strcmp(token,SUB_OP_STR)==0)
-          current->type = SUB_OP;
-  else if(strcmp(token,MUL_OP_STR)==0)
-          current->type = MUL_OP;
-  else if(strcmp(token,DIV_OP_STR)==0)
-          current->type = DIV_OP;
-  else if(strcmp(token,MOD_OP_STR)==0)
-          current->type=MOD_OP;
-  else if(strcmp(token,ASSIGN_OP_STR)==0)
-          current->type = ASSIGN_OP;
-  else{
-          current->type = SYMBOL;
-          strcpy(current->symbol,token);
+  int i;
+  if (sscanf(token, "%d", &i) == 1) { // token is integer literal
+      current->type = INTEGER;
+      current->value.type = TYPE_INT;
+      current->value.value.iVal = i;
+      return current;
   }
-  return current;
+
+
+  if(strcmp(token,ADD_OP_STR)==0) {
+          current->type=ADD_OP;
+          return current;
+  }
+
+  else if(strcmp(token,SUB_OP_STR)==0)
+  {
+          current->type = SUB_OP;
+          return current;
+  }
+
+  else if(strcmp(token,MUL_OP_STR)==0) {
+          current->type = MUL_OP;
+          return current;
+  }
+
+  else if(strcmp(token,DIV_OP_STR)==0) {
+          current->type = DIV_OP;
+          return current;
+  }
+
+  else if(strcmp(token,MOD_OP_STR)==0) {
+          current->type=MOD_OP;
+          return current;
+  }
+  else if(strcmp(token,ASSIGN_OP_STR)==0) {
+          current->type = ASSIGN_OP;
+          return current;
+  }
+  else{
+    current->type = SYMBOL;
+    strcpy(current->symbol,token);
+    return current;
+  }
+
 }
