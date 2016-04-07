@@ -25,14 +25,18 @@ int main(int argc,char* argv[]){
         printf("Enter postfix expressions (CTRL-D to exit): \n");
         for(;; ) {
                 printf(">");
-                fgets(arr,MAX_LINE,stdin);
+                if(fgets(arr,MAX_LINE,stdin)==EOF){
+                  break;
+                }
                 for(int j=0; j<strlen(arr)+1; j++) {
                         if(arr[j]=='\n') {
                                 arr[j]='\0';
                         }
                 }
                 parse(arr);
-                ParserError parse = getParserError();
+                // ParserError parse = getParserError();
         }
+        printf("\n");
+        dumpTable();
         return 0;
 }
