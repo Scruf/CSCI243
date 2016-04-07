@@ -12,86 +12,90 @@ ParserError parser = NONE;
 
 StackNode *stack = NULL;
 ExpNode* insert(void) {
-    ExpNode* current = NULL;
-    if (emptyStack(stack)) {
-        parser = TOO_FEW_TOKENS;
-        printf("Invalid expression, not enough tokens\n");
+        ExpNode* current = NULL;
+        if (emptyStack(stack)) {
+                parser = TOO_FEW_TOKENS;
+                printf("Invalid expression, not enough tokens\n");
+                return current;
+        }
+        current = makeExpNode(top(stack), NULL, NULL);
+        pop(&stack);
+
+        if (current->type == INTEGER || current->type == DOUBLE || current->type == SYMBOL) {
+                return current;
+        }
+
+        current->right = insert();
+        current->left = insert();
         return current;
-    }
-    current = makeExpNode(top(stack), NULL, NULL);
-    pop(&stack);
-
-    if (current->type == INTEGER || current->type == DOUBLE || current->type == SYMBOL) {
-    	return current;
-    }
-
-    current->right = insert();
-    current->left = insert();
-    return current;
 }
 void infixTree(ExpNode * node)
 {
-	if (node->type == INTEGER) {
-		printf("%d", node->value.value.iVal);
-		return;
-	}
 
-	if (node->type == DOUBLE) {
-		printf("%f", node->value.value.dVal);
-		return;
-	}
-
-	if (node->type == SYMBOL) {
-		printf("%s", node->symbol);
-		return;
-	}
-
-	printf("(");
-	infixTree(node->left);
-	if (node->type == ADD_OP) {
-		printf(" + ");
-	}
-	else if (node->type == SUB_OP) {
-		printf(" - ");
-	}
-	else if (node->type == MUL_OP) {
-		printf(" * ");
-	}
-	else if (node->type == DIV_OP) {
-		printf(" / ");
-	}
-	else if (node->type == MOD_OP) {
-		printf("%s", " % ");
-	}
-	else if (node->type == ASSIGN_OP) {
-		printf(" = ");
-	}
-	infixTree(node->right);
-	printf(")");
+        switch(node->type) {
+        case INTEGER:
+                printf("%d",node->value.value.iVal);
+                return;
+        case DOUBLE:
+                printf("%lf",node->value.value.dVal);
+                return;
+        case SYMBOL:
+                printf("%s",node->symbol);
+                return;
+        default:
+                break;
+        }
+        printf("(");
+        infixTree(node->left);
+        switch(node->type){
+          case ADD_OP:
+            printf("+");
+            break;
+          case SUB_OP:
+            printf("-");
+            break;
+          case MUL_OP:
+            printf("*");
+            break;
+          case DIV_OP:
+            printf("/");
+            break;
+          case MOD_OP:
+            printf("%%");
+            break;
+          case ASSIGN_OP:
+            printf("=");
+            break;
+          default:
+          break;
+        }
+      
+        infixTree(node->right);
+        printf(")");
 }
 ExpNode * parseTree(char expr[])
 {
-	char *token;
-	token = strtok(expr, " ");
+        char *token;
+        token = strtok(expr, " ");
 
-	ExpNode *newNode;
+        ExpNode *newNode;
 
-	while (token != NULL) {
-		push(&stack, token);
-	    token = strtok(NULL, " ");
-	}
+        while (token != NULL) {
+                push(&stack, token);
+                token = strtok(NULL, " ");
+        }
 
-	newNode = insert();
+        newNode = insert();
 
-	// If there are excess nodes, there were too many tokens.
-	if (emptyStack(stack) == 0) {
-		fprintf(stderr, "Invalid expression, too many tokens\n");
-		parser = TOO_MANY_TOKENS;
-		while(emptyStack(stack) == 0){
-			pop(&stack);
-		}
-	}
-	return newNode;
+        // If there are excess nodes, there were too many tokens.
+        if (emptyStack(stack) == 0) {
+                fprintf(stderr, "Invalid expression, too many tokens\n");
+                parser = TOO_MANY_TOKENS;
+                while(emptyStack(stack) == 0) {
+                        pop(&stack);
+                }
+        }
+        return newNode;
 }
 
 void parse(char exp[]){
