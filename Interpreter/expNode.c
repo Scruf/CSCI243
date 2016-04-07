@@ -15,7 +15,17 @@
    ASSIGN_OP_STR	"="
 
  */
-
+ // Construct an expression node dynamically on the heap.
+ // Assume the following order when determining which
+ // type to create:
+ //	1. the operators
+ //  	2. literal
+ //	3. integer literal
+ //	4. symbol
+ // @param token The next C string token in the expression
+ // @param left Pointer to left node (NULL if none)
+ // @param right Pointer to right node (NULL if none)
+ // @return The new node
 ExpNode* makeExpNode(char token[],ExpNode*left, ExpNode* right){
   ExpNode *current = (ExpNode *)calloc(1,sizeof(ExpNode));
 

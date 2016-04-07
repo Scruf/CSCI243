@@ -1,3 +1,13 @@
+/*
+===========================================================================
+ Name        : interp.c
+ Author      : Egor Kozitski
+ Version     :
+ Copyright   : No notice
+ Description : Interpreter
+              Program get stuck when it encounters an error
+ ============================================================================
+ */
 #define _GNU_SOURCE
 #include "stackNode.h"
 #include "stack.h"
