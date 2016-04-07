@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include "stackNode.h"
 #include "stack.h"
 #include "symTbl.h"
@@ -25,7 +26,7 @@ int main(int argc,char* argv[]){
         printf("Enter postfix expressions (CTRL-D to exit): \n");
         for(;; ) {
                 printf(">");
-                if(fgets(arr,MAX_LINE,stdin)==EOF){
+                if(fgets(arr,MAX_LINE,stdin)==NULL){
                   break;
                 }
                 for(int j=0; j<strlen(arr)+1; j++) {
@@ -34,9 +35,10 @@ int main(int argc,char* argv[]){
                         }
                 }
                 parse(arr);
-                // ParserError parse = getParserError();
+
         }
         printf("\n");
         dumpTable();
+
         return 0;
 }
