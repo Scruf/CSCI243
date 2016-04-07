@@ -6,41 +6,60 @@
 static int number_of_symbols;
 static Symbol symbol[MAX_SYMBOLS];
 static Symbol createSymbol(Type type, char* varName, char* value);
+int str_to_int( char str_score[] ) {
 
+        int value = 0;
+        for ( int j = 0; str_score[j] != '\0'; ++j ) {
+
+                if ( isdigit( str_score[j] ) ) {
+                        value = value * 10 + (str_score[j] - '0');
+
+                }
+                else {
+                        // stop on finding the first non-numeric digit.
+                        break; // the value is not an integer.
+                }
+        }
+        return value;
+}
 void buildTable(char filename[]){
-								if(filename==NULL) {
-																return;
-								}
-								FILE *file = fopen(filename,"r");
-								if (file==0) {
-																printf("Error loading symbol table]n");
-																exit(-1);
-								}
-								int counter=0;
-								if (!feof(file)) {
-																for(int i=0; i<MAX_SYMBOLS; i++) {
-																								char *variable_type = (char *)calloc(1,1000);
-																								char *variable_name = (char *)calloc(1,1000);
-																								char *variable_value = (char *)calloc(1,1000);
-																								if(fscanf(file, "%s %s %s", variable_type, variable_name, variable_value)!=3) {
-																																printf("Invalid number of format o arguments");
-																																break;
-																								}
-																								else{
-																																if (strcmp(variable_type,"int")==0) {
-																																								Symbol temp = createSymbol(TYPE_INT,variable_name,variable_value);
-																																								symbol[counter] = temp;
-																																}
-																																if(strcmp(variable_type,"double")==0) {
-																																								Symbol temp = createSymbol(TYPE_DOUBLE,variable_name,variable_value);
-																																								symbol[counter]=temp;
-																																}
-																								}
-																								counter++;
-																}
-								}
-								number_of_symbols=counter;
-								fclose(file);
+	if(filename==NULL){ //no filename, empty table.
+return;
+}
+FILE *file=fopen(filename,"r");
+
+if(file==NULL){
+fprintf(stderr,"Error loading symbol table\n");
+exit(EXIT_FAILURE);
+}
+
+int i=0;
+while(i<MAX_SYMBOLS && !feof(file)){
+
+char *typeToken=(char *)malloc(1024);
+char *nameToken=(char *)malloc(1024);
+char *valueToken=(char *)malloc(1024);
+
+if(fscanf(file, "%s %s %s", typeToken, nameToken, valueToken)!=3){
+break;
+}
+
+
+if(strcmp(typeToken,"int")==0){
+Symbol nS=createSymbol(TYPE_INT, nameToken, valueToken);
+symbol[i]=nS;
+}else if(strcmp(typeToken,"double")==0){
+Symbol nS=createSymbol(TYPE_DOUBLE, nameToken, valueToken);
+symbol[i]=nS;
+}
+
+i++;
+}
+number_of_symbols=i;
+
+fclose(file);
+
+return;
 
 }
 void dumpTable(void){

@@ -1,6 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "stackNode.h"
+#include "stack.h"
 #include "symTbl.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "interp.h"
+#include "parser.h"
 
 
 int main(int argc,char* argv[]){
@@ -9,7 +14,7 @@ int main(int argc,char* argv[]){
                 buildTable(NULL);
         }
         else if(argc>1) {
-                buildTable(argv[1])
+                buildTable(argv[1]);
         }
         else{
                 printf("Ussage: interp [sym-table]\n");
@@ -27,7 +32,7 @@ int main(int argc,char* argv[]){
                         }
                 }
                 parse(arr);
-                ParseError parse_error = getParserError();
+                ParserError parse = getParserError();
         }
         return 0;
 }

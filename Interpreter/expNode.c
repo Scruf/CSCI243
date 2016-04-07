@@ -1,79 +1,62 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include "helper.h"
 #include "expNode.h"
-#include "symTbl.h"
 
-/*
-   ADD_OP_STR	"+"
-   SUB_OP_STR	"-"
-   MUL_OP_STR	"*"
-   DIV_OP_STR	"/"
-   MOD_OP_STR	"%"
-   ASSIGN_OP_STR	"="
+/// makeExpNode makes a new expression node
+/// @param token the C string token in the expression
+/// @param left node to the left, NULL if none
+/// @param right node to the right NULL if none
+/// @return the new node
+ExpNode* makeExpNode(char token[], ExpNode* left, ExpNode* right) {
+    ExpNode* newNode = malloc(sizeof(ExpNode));
 
- */
+    newNode->left = left;
+    newNode->right = right;
 
-ExpNode* makeExpNode(char token[],ExpNode*left, ExpNode* right){
-  ExpNode *current = (ExpNode *)calloc(1,sizeof(ExpNode));
-
-  current->left = left;
-  current->right = right;
-
-
-  for(int i=0;i<=strlen(token+1);i++){
-    if(token[i]=='.'){
-      current->type=DOUBLE;
-      current->value.type=TYPE_DOUBLE;
-      current->value.value.dVal = atof(token);
-      return current;
+    if (!strcmp(token, ADD_OP_STR)) {
+        newNode->type = ADD_OP;
+        return newNode;
     }
-  }
+    if (!strcmp(token, SUB_OP_STR)) {
+        newNode->type = SUB_OP;
+        return newNode;
+    }
+    if (!strcmp(token, MUL_OP_STR)) {
+        newNode->type = MUL_OP;
+        return newNode;
+    }
+    if (!strcmp(token, DIV_OP_STR)) {
+        newNode->type = DIV_OP;
+        return newNode;
+    }
+    if (!strcmp(token, MOD_OP_STR)) {
+        newNode->type = MOD_OP;
+        return newNode;
+    }
+    if (!strcmp(token, ASSIGN_OP_STR)) {
+        newNode->type = ASSIGN_OP;
+        return newNode;
+    }
+    double d;
+    if (sscanf(token, "%lf", &d) == 1 && strchr(token, '.') != NULL) {
+                                 // token must contain '.' to be double,
+                                 // else all integers would reach this code
+        newNode->type = DOUBLE;
+        newNode->value.type = TYPE_DOUBLE;
+        newNode->value.value.dVal = d;
+        return newNode;
+    }
+    int i;
+    if (sscanf(token, "%d", &i) == 1) { // token is integer literal
+        newNode->type = INTEGER;
+        newNode->value.type = TYPE_INT;
+        newNode->value.value.iVal = i;
+        return newNode;
+    }
 
-  int i;
-  if (sscanf(token, "%d", &i) == 1) { // token is integer literal
-      current->type = INTEGER;
-      current->value.type = TYPE_INT;
-      current->value.value.iVal = i;
-      return current;
-  }
-
-
-  if(strcmp(token,ADD_OP_STR)==0) {
-          current->type=ADD_OP;
-          return current;
-  }
-
-  else if(strcmp(token,SUB_OP_STR)==0)
-  {
-          current->type = SUB_OP;
-          return current;
-  }
-
-  else if(strcmp(token,MUL_OP_STR)==0) {
-          current->type = MUL_OP;
-          return current;
-  }
-
-  else if(strcmp(token,DIV_OP_STR)==0) {
-          current->type = DIV_OP;
-          return current;
-  }
-
-  else if(strcmp(token,MOD_OP_STR)==0) {
-          current->type=MOD_OP;
-          return current;
-  }
-  else if(strcmp(token,ASSIGN_OP_STR)==0) {
-          current->type = ASSIGN_OP;
-          return current;
-  }
-  else{
-    current->type = SYMBOL;
-    strcpy(current->symbol,token);
-    return current;
-  }
-
+    // token is symbol
+    newNode->type = SYMBOL;
+    strcpy(newNode->symbol, token);
+    return newNode;
 }
