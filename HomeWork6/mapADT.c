@@ -23,7 +23,7 @@ void map_destroy( MapADT map ){
 
       free(map->keys);
       free(map->values);
-      
+
 
 
 }
@@ -31,12 +31,12 @@ void map_clear( MapADT map ){
         map->size = 0;
         map->keys = realloc(map->keys,0);
         map->values = realloc(map->values,0);
-        map->equals = realloc(map->equals,0);
+
 
 
       }
 bool map_contains(MapADT map, void *key){
-        for (unsigned int i = 0; i < map->size ;i++) {
+        for ( int i = 0; i < map->size ;i++) {
 
                   if (map->equals(key,map->keys[i]))
                           return true;
@@ -75,7 +75,7 @@ const void *map_get( MapADT map, void *key ){
 void *map_delete( MapADT map, void *key ){
         if (map_empty(map)) {
                 exit(EXIT_FAILURE);
-        }for (unsigned int i = 0; i < map->size; i++) {
+        }for ( int i = 0; i < map->size; i++) {
                 if (map->equals(key,map->keys[i])) {
                         map->size--;
                         void *value = map->values[i];
