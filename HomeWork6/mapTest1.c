@@ -123,7 +123,7 @@ void process_uint( MapADT map) {
 
 	fputs( "Inserting: ", stdout );
 	for( i = 0; i < numData; ++i ) {
-		puts("Inside fucking for loop");
+
 		key = (unsigned int*)malloc(sizeof(int));
 		assert( NULL != key );
 		*key = i*1000;
