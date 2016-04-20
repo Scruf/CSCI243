@@ -1,3 +1,12 @@
+/*
+===========================================================================
+ Name        : mapADT.c
+ Author      : Egor Kozitski
+ Version     :
+ Copyright   : Your copyright notice
+ Description : 3 unfreed blocks lost 
+ ============================================================================
+ */
 #include <stdbool.h>
 #include <stdlib.h>
 //@param keys - will hold the key
@@ -31,8 +40,8 @@ MapADT map_create( bool (*equals)(const void *a,const void *b) ){
 /// @param map - the MapADT to be manipulated
 void map_destroy( MapADT map ){
 
-      free(map->keys);
-      free(map->values);
+        free(map->keys);
+        free(map->values);
 
 
 
@@ -48,18 +57,17 @@ void map_clear( MapADT map ){
 
 
 
-      }
-      /// Check if the specified entry exists in the map
-      ///
-      /// Uses the map's equals function to determine if an entry with
-      /// the same key already exists in the map. If so, then return
-      /// true.
+}
+/// Check if the specified entry exists in the map
+///
+/// Uses the map's equals function to determine if an entry with
+/// the same key already exists in the map. If so, then return
 bool map_contains(MapADT map, void *key){
-        for ( int i = 0; i < map->size ;i++) {
+        for ( int i = 0; i < map->size; i++) {
 
-                  if (map->equals(key,map->keys[i]))
-                          return true;
-                }
+                if (map->equals(key,map->keys[i]))
+                        return true;
+        }
         return false;
 }
 /// Put the specified entry into the Map
@@ -83,7 +91,7 @@ void* map_put( MapADT map, void *key, void *value){
                 map->keys[map->size-1]=key;
                 map->values[map->size-1]=value;
 
-              }
+        }
 }
 /// Find the entry specified by the key and return a pointer to the value
 ///
@@ -104,15 +112,15 @@ void *map_delete( MapADT map, void *key ){
         if (map_empty(map)) {
                 exit(EXIT_FAILURE);
         }else{
-        for ( int i = 0; i < map->size; i++) {
-                if (map->equals(key,map->keys[i])) {
-                        map->size--;
-                        void *value = map->values[i];
-                        free(map->keys[i]);
-                        return value;
+                for ( int i = 0; i < map->size; i++) {
+                        if (map->equals(key,map->keys[i])) {
+                                map->size--;
+                                void *value = map->values[i];
+                                free(map->keys[i]);
+                                return value;
+                        }
                 }
         }
-      }
         return NULL;
 
 

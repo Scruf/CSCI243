@@ -1,349 +1,40 @@
-commit 57fb25a014903a7d18f7eb247645a1a6c82e60c5
+commit ca4f24dfe1cd6d45c571a8579853b24e92f7180e
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Apr 7 17:54:26 2016 -0400
+Date:   Tue Apr 19 23:25:56 2016 -0400
 
     Final Commit
+    3 blocks left
 
-commit 709ff42dd9bff2dc08884e546284862a5f429eb8
+commit 07195077aab8bd42b69d6bff0ffd1d0c151b80b7
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Apr 7 17:48:31 2016 -0400
+Date:   Tue Apr 19 22:37:25 2016 -0400
 
-    Finishing up with comments
+    Found 3 unallocated blocks
 
-commit 1caa90698604f7074b4499986f300beae5dfa920
+commit 860379145981a87470ed872d98e4e9771ddde6ed
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Apr 7 15:54:38 2016 -0400
+Date:   Tue Apr 19 22:31:43 2016 -0400
 
-    Fixed error with invalid file reading
+    map delete function fixed
 
-commit ac56cb30c40c08583cd99552f8db4cd182b129c8
+commit 17188439b6cf4fe7b5fe9293adbe9e86219929ad
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Apr 7 09:48:29 2016 -0400
+Date:   Tue Apr 19 20:04:36 2016 -0400
 
-    InfixTree memory leak fixed
+    Fixed loop issues
 
-commit 6a8d8799b2989919d81a4385a45ab4efde452af9
+commit 5821bf4a221583379be138066e5e5b0dffb9a65f
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Apr 7 01:01:25 2016 -0400
+Date:   Tue Apr 19 18:37:56 2016 -0400
 
-    Found bug in infixTree
+    Fixed wrong memory allocation in  create map
 
-commit 1410da1b37e379c386ed870ff14374a9ee39464d
+commit 3005dd47398cfa2241d851ba6d81716f1b9087d7
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Wed Apr 6 23:52:16 2016 -0400
+Date:   Mon Apr 18 22:57:02 2016 -0400
 
-    Eval Tree finished
+    HomeWork 6 initial commit
 
-commit edc057fe775f7360c1d22f4abc382cdc5b46f36c
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Wed Apr 6 15:06:44 2016 -0400
 
-    Symbol Table and partial implementation of parser completed
 
-commit a12365f2782e3352c9544c2287a605bfc0bbccbb
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Apr 5 22:59:29 2016 -0400
 
-    Symbol Table fixed
-
-commit cb29de6d92d4d288695cb3a64de25efa540948d7
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Apr 5 22:39:36 2016 -0400
-
-    expNode not recognizing int bug fixed
-
-commit 3ca1155bdb9778328e9891ec385f7d5b959485c9
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Apr 4 16:56:18 2016 -0700
-
-    Partial implmentation of parserTree and evalTree
-
-commit 6b5e142cad81c28b86f2613495f5892c730c5e85
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Apr 4 16:23:56 2016 -0700
-
-    Infix tree Segmentation error fixed
-
-commit fdeb5898abb4fd0429721bfcf4b86b0a9c2cb907
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Apr 3 15:56:15 2016 -0700
-
-    Partial Implementation of parser
-
-commit 7453a5f935c343b518245436540fe46acdda1791
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Apr 3 14:06:08 2016 -0700
-
-    expNode implementation finished and tested
-
-commit 92831e5b35e5a17d62006700eac98c1247ec8119
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sat Apr 2 15:34:32 2016 -0700
-
-    PArtial Implementation of expNode
-
-commit 968467267bb2933244ec5f4d3a0db9e157ddfb5d
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sat Apr 2 14:38:25 2016 -0700
-
-    Partial Implementation of Parser
-
-commit 633ec567123c7512813f18cffd2a47b0a86029f2
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sat Apr 2 13:16:34 2016 -0700
-
-    Fixed file checking condition
-
-commit 5c9b79c40646278cbbc7a34f5078c363cb36e594
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sat Apr 2 12:53:29 2016 -0700
-
-    Symbol Table error fixed
-
-commit 1d63ade6ac9d8da7c77b3066420e4a638f6d9924
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sat Apr 2 12:27:10 2016 -0700
-
-    Partial Implementation of Symbol table
-
-commit 998752f554d7f0a55a72c13a766ba5058d08ed95
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sat Apr 2 11:45:26 2016 -0700
-
-    Partial Implementation of Symbol Table
-
-commit 5797788537b2e883d92887d67ce8d0a86a239320
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Mar 29 14:49:50 2016 -0700
-
-    Header for bst updated
-
-commit 55b1e87cbcacfae524074cf081191a603c42a476
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Mar 29 14:45:27 2016 -0700
-
-    Stack revised
-
-commit d586a1d4c08c6e0ad8f3eaeed9b8a6c781061d53
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Mar 29 13:40:20 2016 -0700
-
-    Stack fixed
-
-commit c8fefccfb1032864cf9da65bd66d2191f37e01cc
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Mar 29 13:32:21 2016 -0700
-
-    Partial Implementeation of stack finished
-
-commit 5de6f4c319116f42bba41dd6cf808de8121bfad4
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Mar 28 18:02:31 2016 -0700
-
-    Revisions added
-
-commit 9762360ebb5a9bbaf09a40e64a3e02538e16be30
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Mar 28 17:51:55 2016 -0700
-
-    Traversal added and tested
-
-commit 0418289256503f93fda4fd040e1e3687486b059f
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Mar 28 17:40:56 2016 -0700
-
-    Inorder Traverse implemented
-
-commit 4f782a545aea77bf9a0d255c0885f80edadfb7f7
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Mar 28 16:01:43 2016 -0700
-
-    Error checking added for Homework 5
-
-commit f012f5c4e897bf9888458ce9c68d54a8f085b786
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Mar 27 11:21:11 2016 -0700
-
-    Initial commit HomeWork5
-
-commit dc3ba7183391eb929af1ad90917a16dac85be862
-Author: Egor <egor.kozitski@mail.citytech.cuny.edu>
-Date:   Fri Mar 11 13:00:44 2016 -0500
-
-    Interpreter Initial Commit
-
-commit 0dd68b4376763a3fa1b4ed850b7f6dd908f975af
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Mar 8 19:17:29 2016 -0800
-
-    questions file finished
-
-commit d59687dc17b989066e3ad6d2680f65aca0fe1a7a
-Merge: bfdb51b 4fdc697
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Mar 7 06:19:36 2016 -0800
-
-    Merge branch 'master' of https://github.com/Scruf/CSCI243
-
-commit bfdb51bbb0f9f7c2996e9454f19de18fb9382616
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Mar 7 06:19:03 2016 -0800
-
-    Initial Commit Home Work 4
-
-commit 4fdc69787a4f7aa672d48e08cc9d201638d8e2dd
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Fri Mar 4 16:37:29 2016 -0800
-
-    Final Commit
-
-commit acacb9f5405a55a88f947d3a0ac3ec2ebf75fa3c
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Fri Mar 4 16:35:22 2016 -0800
-
-    Finished
-
-commit 5eb411d5da955ed2dfd3e2fd27373faf7e7792c5
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Fri Mar 4 14:17:00 2016 -0800
-
-    I tried
-
-commit 51416d846ab80c2e8ccb29abb07e8a61b81dc353
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Fri Mar 4 12:20:24 2016 -0800
-
-    Infinite loop bug
-
-commit f03f52f6354aa3884b2ea683cc9b2d41a77bc737
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Fri Mar 4 11:51:10 2016 -0800
-
-    partial implementation
-
-commit d97ebd005dad1391caad50b3dfeb6aab2d5862bf
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Fri Mar 4 10:31:17 2016 -0800
-
-    Helpwer method implemented
-
-commit 3b7111bd11744586c10c11ba87036a0e9590abcc
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Mar 3 19:35:45 2016 -0800
-
-    Unfinished Business
-
-commit 57346b3864126eb3c3ab84d891304a8b18ccd50b
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Mar 3 17:39:35 2016 -0800
-
-    apply burning trees implemented
-
-commit 15102a97026ea6331a8a53442664d5de9ba0b15a
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Mar 3 17:02:46 2016 -0800
-
-    Forest Population bug fixed
-
-commit 5a18cfb8307e3bb441b5aed1945dc578351f49b6
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Mar 3 16:35:15 2016 -0800
-
-    Forest populated
-
-commit d5fd3ecadbf4957e1b3b9cafdc4bf76c277659d8
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Thu Mar 3 15:12:43 2016 -0800
-
-    Added test file
-
-commit 7460b4e1fa3db61f9f2f17081373bc27f76ee6a6
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 29 16:45:27 2016 -0800
-
-    Command Line arguments finished
-
-commit c262feaf82eabf2f9522a1a4a72bc48d06453ea2
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Feb 28 18:37:31 2016 -0800
-
-    Phase 1 completed
-
-commit a7c2504b146827116dd6ab7275da2335505419ba
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 15 15:58:47 2016 -0800
-
-    Phase 2 asssignment finished
-
-commit 1c34bd91b6b486d9cbc6083084fe2ef553b0bc8f
-Merge: 790dd7c a7f0dda
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 15 15:39:53 2016 -0800
-
-    Merge branch 'master' of https://github.com/Scruf/CSCI243
-
-commit 790dd7cb36ba05a944d93bd1a8d0d1620b350c71
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 15 15:39:19 2016 -0800
-
-    Act1 completed and tested
-
-commit a7f0dda08c86ae69734a55e4aa3a2810486d765f
-Author: Egor <ekozitski@hotmail.com>
-Date:   Tue Feb 9 19:28:09 2016 -0500
-
-    Update review_grades.c
-
-commit ca425ea84b639662af8f5e97697dc49e1984279f
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Feb 9 16:22:40 2016 -0800
-
-    Final commit
-
-commit d2c9a961a6287ad8c1ee85acdbb47ef8a54fc814
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Feb 9 16:18:27 2016 -0800
-
-    historgram and str_dev finished
-
-commit 65a38dddc3bf35e63839d37ef1d2e1a61faf8739
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 8 16:30:07 2016 -0800
-
-    std_dev method completed
-
-commit 41f40e90308a51eeaaaedef48ce31a70c3a69a92
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 8 16:08:18 2016 -0800
-
-     Average and std_dev added
-
-commit 10740f026c8bdac9669f59abecc41ba365b796a2
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 8 15:20:54 2016 -0800
-
-    Average function implemented
-
-commit 6c36d9a1d97e5a385b538cfb501cac3d9d8f3ba8
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Feb 7 13:36:20 2016 -0800
-
-    Initial commit of a second C homework
-
-commit 2ebf865bee4249983beaf986510e60d9f5d2e48a
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 1 19:59:04 2016 -0800
-
-    Final commit
-
-commit d67997f6ffd0433c0323494a6f73be6a32b2b84b
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Feb 1 19:18:43 2016 -0800
-
-    Printing for even numbers are finished and tested
-
-commit f854ac2c82c6a581699f2f1b6009ab2053e81d1a
-Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Jan 31 15:36:42 2016 -0800
-
-    Initial commit of C assignments
