@@ -45,6 +45,7 @@ int main(int argc, char *argv[]){
           printf("You are good to go my friend");
         }else{
           printf("Error: racer names must not exceed length 6.");
+          exit(0)
         }
       }
   }
