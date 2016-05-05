@@ -1,3 +1,99 @@
+commit 9a1c26a093db6cd90c50c7d201e45cf7a17afc52
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu May 5 18:35:00 2016 -0400
+
+    Brushing up some changes
+
+commit f923d9ed3f7cb19fe0133429d30261bac7d5f120
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu May 5 17:39:24 2016 -0400
+
+    Fixing memory issues
+
+commit 19019f99b8726e782b8a6fb20e3f471aaad33dab
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu May 5 16:41:38 2016 -0400
+
+    Finished make Racer
+
+commit b7f87ea33f5f24988b5057bd5e1fca3b8fd2aecd
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon May 2 19:14:43 2016 -0400
+
+    Added run script
+
+commit dfc6d2607c3c759a31cfcab502245daf8a2db394
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon May 2 12:04:47 2016 -0400
+
+    Partial Implementation of racer
+
+commit e08d1e137c7d279dd5740f7419f5938792c159f8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun May 1 19:43:55 2016 -0400
+
+    Added initial error checking
+
+commit 0eb548e3c46ae21af7a48e253a9070e97b0e314b
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun May 1 19:09:18 2016 -0400
+
+    HomeWork 8 initial commit
+
+commit 3520e72e2bef014a8dec2ffaa20b362ef1ec7571
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 25 20:32:41 2016 -0400
+
+    Log added
+
+commit 29c73aa57e6c924560393e09af4d08d15bc23b41
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 25 20:31:35 2016 -0400
+
+    Comments added
+
+commit 5bfdc0a16f497a0fc1336fff85f5b321fa6e2d4c
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 25 11:45:31 2016 -0400
+
+    optimizing dissectPackets
+
+commit 08f0501a6fb287c8e69d083297772d0c526dd623
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 14:06:23 2016 -0400
+
+    Added destination and source addresses
+
+commit 00edfe7ebfa51fb0aa3f8d06885c5f78499bae9a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 13:34:05 2016 -0400
+
+    Added Type of service and Header Length
+
+commit ed9511d633f2cadb801e5b6db9543d8b8af4ea1f
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 11:13:28 2016 -0400
+
+    Added packet version
+
+commit 3c3cf9420fa7e171e6deaff3b36bde9500e60b59
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 10:30:52 2016 -0400
+
+    Reading number of packets from packet file
+
+commit 4f7236b069712de3a9a4f9aa2e2917dbad79c30a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 08:49:23 2016 -0400
+
+    Initial commit homework 7
+
+commit 38d170e90ecb3a9fef3d305dcbc965abd8e61a21
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 19 23:30:21 2016 -0400
+
+    comments added to Homework6
+
 commit ca4f24dfe1cd6d45c571a8579853b24e92f7180e
 Author: Scruf <ekozitski@hotmail.com>
 Date:   Tue Apr 19 23:25:56 2016 -0400

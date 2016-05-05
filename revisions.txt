@@ -1,40 +1,42 @@
-commit ca4f24dfe1cd6d45c571a8579853b24e92f7180e
+commit 9a1c26a093db6cd90c50c7d201e45cf7a17afc52
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Apr 19 23:25:56 2016 -0400
+Date:   Thu May 5 18:35:00 2016 -0400
 
-    Final Commit
-    3 blocks left
+    Brushing up some changes
 
-commit 07195077aab8bd42b69d6bff0ffd1d0c151b80b7
+commit f923d9ed3f7cb19fe0133429d30261bac7d5f120
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Apr 19 22:37:25 2016 -0400
+Date:   Thu May 5 17:39:24 2016 -0400
 
-    Found 3 unallocated blocks
+    Fixing memory issues
 
-commit 860379145981a87470ed872d98e4e9771ddde6ed
+commit 19019f99b8726e782b8a6fb20e3f471aaad33dab
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Apr 19 22:31:43 2016 -0400
+Date:   Thu May 5 16:41:38 2016 -0400
 
-    map delete function fixed
+    Finished make Racer
 
-commit 17188439b6cf4fe7b5fe9293adbe9e86219929ad
+commit b7f87ea33f5f24988b5057bd5e1fca3b8fd2aecd
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Apr 19 20:04:36 2016 -0400
+Date:   Mon May 2 19:14:43 2016 -0400
 
-    Fixed loop issues
+    Added run script
 
-commit 5821bf4a221583379be138066e5e5b0dffb9a65f
+commit dfc6d2607c3c759a31cfcab502245daf8a2db394
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Tue Apr 19 18:37:56 2016 -0400
+Date:   Mon May 2 12:04:47 2016 -0400
 
-    Fixed wrong memory allocation in  create map
+    Partial Implementation of racer
 
-commit 3005dd47398cfa2241d851ba6d81716f1b9087d7
+commit e08d1e137c7d279dd5740f7419f5938792c159f8
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Apr 18 22:57:02 2016 -0400
+Date:   Sun May 1 19:43:55 2016 -0400
 
-    HomeWork 6 initial commit
+    Added initial error checking
 
+commit 0eb548e3c46ae21af7a48e253a9070e97b0e314b
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun May 1 19:09:18 2016 -0400
 
-
+    HomeWork 8 initial commit
 
