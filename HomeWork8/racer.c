@@ -5,7 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+/*
+   ===========================================================================
+   Name        : dissectPackets.c
+   Author      : Egor Kozitski
+   Version     :
+   Copyright   : Your copyright notice
+   Description :
+   ============================================================================
+ */
 void initRacers(long milliseconds);
 Racer *makeRacer(char *name, int position);
 void destroyRacer(Racer *racer);
