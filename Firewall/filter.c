@@ -86,8 +86,8 @@ static bool PacketIsInbound(FilterConfig* fltCfg, unsigned int srcAddr, unsigned
 IpPktFilter CreateFilter(void)
 {
    // TODO: implement function
-
-   return NULL;
+   IpPktFilter filter = malloc(sizeof(FilterConfig));
+   return filter;
 }
 
 
@@ -127,7 +127,7 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
    unsigned int temp;
    unsigned int mask;
    unsigned int dstTcpPort;
-   bool localNetFound = false;
+
 
    FilterConfig *fltCfg = (FilterConfig*)filter;
 
@@ -151,7 +151,7 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
       }
       else if( strcmp(pToken, "LOCAL_NET") == 0 )
       {
-         localNetFound = true;
+
          ParseRemainderOfStringForIp(ipAddr);
          temp = ConvertIpUIntOctetsToUInt(ipAddr);
          fltCfg->localIpAddr = temp;
@@ -187,10 +187,6 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
 
    fclose(pFile);
 
-   if ( ! localNetFound ){
-      printf("Error configuration file must set LOCAL_NET\n");
-      return false;
-   }
 
    return true;
 }
@@ -209,18 +205,25 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
 bool FilterPacket(IpPktFilter filter, unsigned char* pkt)
 {
    // TODO: implement function
-   unsigned int dest_addr = ExtractDstAddrFromIpHeader(pkt);
+   FilterConfig *filter_config = (FilterConfig*)filter;
    unsigned int source_addr = ExtractSrcAddrFromIpHeader(pkt);
-   unsigned int protocol = ExtractIpProtocol(pkt);
-   unsigned int icmp_type = ExtractIcmpType(pkt);
-   unsigned int tcp_port = ExtractTcpDstPort(pkt);
-   bool is_blocked_source_addr = BlockIpAddress(filter,source_addr),is_blocked_dest_addr = BlockIpAddress(filter,dest_addr),is_blocked_tcp=BlockInboundTcpPort(filter,tcp_port);
-   if (is_blocked_source_addr || is_blocked_dest_addr)
-    return false;
-   else if(protocol==1 && icmp_type==8 && PacketIsInbound(filter,source_addr,dest_addr))
-     return false;
-   else if(protocol==6 && PacketIsInbound(filter,source_addr,dest_addr) && is_blocked_tcp)
-     return false;
+   unsigned int dest_addr = ExtractDstAddrFromIpHeader(pkt);
+   unsigned int ip_port = ExtractIpProtocol(pkt);
+   bool is_inbound_packet = PacketIsInbound(filter,source_addr,dest_addr);
+   bool block_ip_address = BlockIpAddress(filter,source_addr);
+   bool block_inbound_tcp_port = BlockInboundTcpPort(filter,source_addr);
+   if (!is_inbound_packet)
+    return true;
+  if (ip_port == IP_PROTOCOL_ICMP){
+    if(filter_config->blockInboundEchoReq!=0 ||block_ip_address)
+      return false;
+  }
+  else{
+    if(ip_port==IP_PROTOCOL_TCP){
+      if(block_ip_address || block_inbound_tcp_port)
+        return false;
+    }
+  }
 
 
    return true;
@@ -265,14 +268,17 @@ static bool BlockInboundTcpPort(FilterConfig* fltCfg, unsigned int port)
 /// @param dstIpAddr The destination IP address of a packet
 static bool PacketIsInbound(FilterConfig* fltCfg, unsigned int srcIpAddr, unsigned int dstIpAddr)
 {
-   // TODO: implement function
-   unsigned int localNetwork = fltCfg->localIpAddr & fltCfg->localMask;
+  unsigned int localNet, srcNet, dstNet;
+  localNet = fltCfg->localIpAddr & fltCfg->localMask;
+  srcNet = srcIpAddr & fltCfg->localMask;
+  dstNet = dstIpAddr & fltCfg->localMask;
 
-   // TODO: implement function
-   return (localNetwork != (srcIpAddr & fltCfg->localMask)) &
-          (localNetwork == (dstIpAddr & fltCfg->localMask));
+  if(dstNet == localNet && srcNet != localNet){
+     return true;
+  }
+
+  return false;
 }
-
 
 /// Adds the specified IP address to the array of blocked IP addresses in the
 /// specified filter configuration. This requires allocating additional memory

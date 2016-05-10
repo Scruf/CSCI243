@@ -2,7 +2,7 @@
 /// \brief Reads IP packets from a named pipe, examines each packet,
 /// and writes allowed packets to an output named pipe.
 /// Author: Chris Dickens (RIT CS)
-///
+/// Author: Jacob R Hooker - jrh7130
 ///
 /// This file contains proprietary information. Distribution is limited
 /// to Rochester Institute of Technology faculty, students currently enrolled
@@ -24,16 +24,13 @@
 
 #include "filter.h"
 
-
-#include "filter.h"
-
-
+static int BUFFER_LENGTH = 2048;
 /// Type used to control the mode of the firewall
 typedef enum FilterMode_e
 {
-        MODE_BLOCK_ALL,
-        MODE_ALLOW_ALL,
-        MODE_FILTER
+   MODE_BLOCK_ALL,
+   MODE_ALLOW_ALL,
+   MODE_FILTER
 } FilterMode;
 
 
@@ -82,9 +79,48 @@ static bool ReadPacket(unsigned char* buf, int bufLength, int* len);
 /// @return EXIT_SUCCESS or EXIT_FAILURE
 int main(int argc, char* argv[])
 {
-        // TODO: implement function
+   // TODO: implement function
+   IpPktFilter packet_filter = CreateFilter();
+   short command;
 
-        return EXIT_SUCCESS;
+   if (argc<2){
+     printf("Usage: firewall <config_file>");
+     return EXIT_FAILURE;
+   }else{
+     bool flag = ConfigureFilter(packet_filter,argv[1]);
+     if (flag==false)
+      return EXIT_FAILURE;
+
+   }
+   pthread_t threads[1];
+   pthread_create(&threads[0],NULL,FilterThread,(void*)packet_filter);
+   DisplayMenu();
+   for(;;){
+     fflush(stdout);
+     command = getc(stdin);
+     if(command!='\n'){
+       switch(command){
+         case 49:
+            Mode = MODE_BLOCK_ALL;
+          break;
+          case 50:
+            Mode = MODE_ALLOW_ALL;
+            break;
+          case 51:
+            Mode = MODE_FILTER;
+            break;
+          case 48:
+            pthread_cancel(threads[0]);
+            DestroyFilter(packet_filter);
+            return EXIT_SUCCESS;
+          default:
+          break;
+       }
+       DisplayMenu();
+     }
+   }
+   DestroyFilter(packet_filter);
+   return EXIT_SUCCESS;
 }
 
 
@@ -96,52 +132,39 @@ int main(int argc, char* argv[])
 /// @return Always NULL
 static void* FilterThread(void* args)
 {
-        // TODO: implement function
-        unsigned char buffer[MAXPACKET_LENGTH];
-        int packet_length;
-        bool finish = success=true;
-        int count;
-        IpPktFilter filter = (IpPktFilter)args;
-        OpenPipes();
-        while(Mode) {
-                if (feof(InPipe)==0) {
-                  if(finish){
-                    if(fread(&packet_length,sizeof(int),1,InPipe))
-                      success=true;
-                    if(isSuccess){
-                      isSuccess = true;
-                    }else{
-                      isSuccess=false;
-                    }
-
-                  }
-                  finish = ReadPacket(buffer,&count,&packet_length);
-                  bool block = false;
-                  switch(Mode){
-                    case MODE_BLOCK_ALL:
-                      block = true;
-                    break;
-                    case MODE_ALLOW_ALL:
-                      block = false;
-                    break;
-                    case MODE_FILTER:
-                      block = !FilterPacket(filter,buffer);
-                      break;
-                    default:
-                      break;
-                  }
-                  if (isBlocked!=true){
-                    fwrite(&packet_length,sizeof(int),1,OutPipe);
-                    fwrite(buffer,sizeof(char),packet_length,OutPipe);
-                    fflush(OutPipe);
-                    fflush(InPipe);
-                  }
-                  packet_length = packet_length - count;
-                }
+   // TODO: implement function
+   int length;
+   unsigned char buffer[BUFFER_LENGTH];
+   IpPktFilter pktFilter = args;
+   int *packet_length;
+   packet_length = &length;
+   OpenPipes();
+   for(;;){
+     bool flag = ReadPacket(buffer,BUFFER_LENGTH,packet_length);
+     if(flag==false){
+       return NULL;
+     }
+     ReadPacket(buffer,BUFFER_LENGTH,packet_length);
+     switch(Mode){
+       case MODE_BLOCK_ALL:
+       case MODE_ALLOW_ALL:
+        fwrite(&length,sizeof(int),1,OutPipe);
+        fflush(OutPipe);
+        fwrite(buffer,sizeof(char),length,OutPipe);
+        fflush(OutPipe);
+        break;
+      case MODE_FILTER:
+        if(!FilterPacket(pktFilter,buffer)){
+          fwrite(&length,sizeof(int),1,OutPipe);
+          fflush(OutPipe);
+          fwrite(buffer,sizeof(char),length,OutPipe);
+          fflush(OutPipe);
         }
-        fclose(InPipe);
-        fclose(OutPipe);
-        return NULL;
+      default:
+      break;
+     }
+   }
+   return NULL;
 }
 
 
@@ -149,11 +172,11 @@ static void* FilterThread(void* args)
 /// Print a menu and a prompt to stdout
 static void DisplayMenu(void)
 {
-        printf("\n1. Block All\n");
-        printf("2. Allow All\n");
-        printf("3. Filter\n");
-        printf("0. Exit\n");
-        printf("> ");
+   printf("\n1. Block All\n");
+   printf("2. Allow All\n");
+   printf("3. Filter\n");
+   printf("0. Exit\n");
+   printf("> ");
 }
 
 
@@ -163,48 +186,44 @@ static void DisplayMenu(void)
 static bool OpenPipes(void)
 {
 
-        InPipe = fopen("ToFirewall", "rb");
-        if(InPipe == NULL)
-        {
-                perror("ERROR, failed to open pipe ToFirewall:");
-                return false;
-        }
-
-        OutPipe = fopen("FromFirewall", "wb");
-        if(OutPipe == NULL)
-        {
-                perror("ERROR, failed to open pipe FromFirewall:");
-                return false;
-        }
-
-        return true;
-}
-static bool ReadPacket(unsigned char* buf, int bufLength, int* len)
-{
-   // TODO: implement function
-   unsigned int bytes_rd;
-   bytes_rd = fread(buf, BYTE, bufLength, InPipe);
-   *len = bytes_rd;
-   if(bytes_rd > 0)
+   InPipe = fopen("ToFirewall", "rb");
+   if(InPipe == NULL)
    {
-	   return true;
+      perror("ERROR, failed to open pipe ToFirewall:");
+      return false;
    }
 
-   return false;
+   OutPipe = fopen("FromFirewall", "wb");
+   if(OutPipe == NULL)
+   {
+      perror("ERROR, failed to open pipe FromFirewall:");
+      return false;
+   }
+
+   return true;
 }
+
 
 /// Read an entire IP packet from the input pipe
 /// @param buf Destination buffer for storing the packet
 /// @param bufLength The length of the supplied destination buffer
 /// @param len The length of the packet
 /// @return True if a packet was successfully read
-
 static bool ReadPacket(unsigned char* buf, int bufLength, int* len)
 {
-  unsigned int bytesRead;
-  bytesRead = fread(buf, sizeof(unsigned char), *len, InPipe);
+  size_t pktLen;
 
-  bool isFinished = bytesRead == sizeof(unsigned char)*(*len);
-  *charsRead = bytesRead/sizeof(unsigned char);
-  return isFinished;
+  //read the length of the packet
+  pktLen = fread(&bufLength, sizeof(int), 1, InPipe);
+  if(pktLen < 1){
+     printf("Packet length not found\n");
+     return false;
+  }
+
+  *len = bufLength;
+
+  //read the packet
+  fread(buf, sizeof(char), bufLength, InPipe);
+
+  return true;
 }
