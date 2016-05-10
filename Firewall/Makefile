@@ -43,28 +43,28 @@ COMPILE.cc = $(CXX) $(CXXFLAGS) $(CPPFLAGS) -c
 CPP = $(CPP) $(CPPFLAGS)
 ########## Flags from header.mak
 
-CFLAGS =        -ggdb -std=c99 -Wall -Wextra -pedantic 
-CLIBFLAGS =     -lm -lpthread 
+CFLAGS =        -ggdb -std=c99 -Wall -Wextra -pedantic -Werror -O2
+CLIBFLAGS =     -lm -lpthread
 
 
 ########## End of flags from header.mak
 
 
-CPP_FILES =	
+CPP_FILES =
 C_FILES =	filter.c firewall.c
-PS_FILES =	
-S_FILES =	
+PS_FILES =
+S_FILES =
 H_FILES =	filter.h pktUtility.h
 SOURCEFILES =	$(H_FILES) $(CPP_FILES) $(C_FILES) $(S_FILES)
 .PRECIOUS:	$(SOURCEFILES)
-OBJFILES =	filter.o 
+OBJFILES =	filter.o
 LOCAL_LIBS =	libpktUtility.a
 
 #
 # Main targets
 #
 
-all:	firewall 
+all:	firewall
 
 firewall:	firewall.o $(OBJFILES)
 	$(CC) $(CFLAGS) -o firewall firewall.o $(OBJFILES) $(LOCAL_LIBS) $(CLIBFLAGS)

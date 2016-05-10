@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
 
    }
    pthread_t threads[1];
-   pthread_create(&threads[0],NULL,FilterThread,(void*)packet_filter);
+  pthread_create(&threads[0],NULL,FilterThread,(void*)packet_filter);
    DisplayMenu();
    for(;;){
      fflush(stdout);
@@ -211,19 +211,22 @@ static bool OpenPipes(void)
 /// @return True if a packet was successfully read
 static bool ReadPacket(unsigned char* buf, int bufLength, int* len)
 {
-  size_t pktLen;
+
+  unsigned int packet_length;
+  packet_length = fread(&bufLength,sizeof(int),1,InPipe);
+  *len = bufLength;
 
   //read the length of the packet
-  pktLen = fread(&bufLength, sizeof(int), 1, InPipe);
-  if(pktLen < 1){
+
+  if(packet_length < 1){
      printf("Packet length not found\n");
      return false;
   }
 
   *len = bufLength;
 
-  //read the packet
-  fread(buf, sizeof(char), bufLength, InPipe);
 
-  return true;
+   if(fread(buf, sizeof(char), bufLength, InPipe)){};
+
+  return packet_length < 1 ? false : true;
 }

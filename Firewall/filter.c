@@ -25,7 +25,7 @@
 #define MAX_LINE_LEN  256
 
 /// The type used to hold the configuration settings for a filter
-typedef struct FilterConfig_S
+typedef struct FilterConfig
 {
    unsigned int localIpAddr;
    unsigned int localMask;
@@ -124,7 +124,7 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
    char* pToken;
    char* success;
    unsigned int ipAddr[4];
-   unsigned int temp;
+   unsigned int temp=0;
    unsigned int mask;
    unsigned int dstTcpPort;
 
@@ -205,13 +205,20 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
 bool FilterPacket(IpPktFilter filter, unsigned char* pkt)
 {
    // TODO: implement function
-   FilterConfig *filter_config = (FilterConfig*)filter;
-   unsigned int source_addr = ExtractSrcAddrFromIpHeader(pkt);
-   unsigned int dest_addr = ExtractDstAddrFromIpHeader(pkt);
-   unsigned int ip_port = ExtractIpProtocol(pkt);
-   bool is_inbound_packet = PacketIsInbound(filter,source_addr,dest_addr);
-   bool block_ip_address = BlockIpAddress(filter,source_addr);
-   bool block_inbound_tcp_port = BlockInboundTcpPort(filter,source_addr);
+   FilterConfig *filter_config;
+  filter_config = (FilterConfig*)filter;
+   unsigned int source_addr;
+    source_addr= ExtractSrcAddrFromIpHeader(pkt);
+   unsigned int dest_addr;
+    dest_addr= ExtractDstAddrFromIpHeader(pkt);
+   unsigned int ip_port ;
+    ip_port= ExtractIpProtocol(pkt);
+   bool is_inbound_packet ;
+    is_inbound_packet= PacketIsInbound(filter,source_addr,dest_addr);;
+   bool block_ip_address;
+    block_ip_address= BlockIpAddress(filter,source_addr);;
+   bool block_inbound_tcp_port;
+    block_inbound_tcp_port= BlockInboundTcpPort(filter,source_addr);
    if (!is_inbound_packet)
     return true;
   if (ip_port == IP_PROTOCOL_ICMP){
