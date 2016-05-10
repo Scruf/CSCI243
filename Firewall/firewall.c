@@ -25,12 +25,15 @@
 #include "filter.h"
 
 
+#include "filter.h"
+
+
 /// Type used to control the mode of the firewall
 typedef enum FilterMode_e
 {
-   MODE_BLOCK_ALL,
-   MODE_ALLOW_ALL,
-   MODE_FILTER
+        MODE_BLOCK_ALL,
+        MODE_ALLOW_ALL,
+        MODE_FILTER
 } FilterMode;
 
 
@@ -79,9 +82,9 @@ static bool ReadPacket(unsigned char* buf, int bufLength, int* len);
 /// @return EXIT_SUCCESS or EXIT_FAILURE
 int main(int argc, char* argv[])
 {
-   // TODO: implement function
+        // TODO: implement function
 
-   return EXIT_SUCCESS;
+        return EXIT_SUCCESS;
 }
 
 
@@ -93,21 +96,64 @@ int main(int argc, char* argv[])
 /// @return Always NULL
 static void* FilterThread(void* args)
 {
-   // TODO: implement function
+        // TODO: implement function
+        unsigned char buffer[MAXPACKET_LENGTH];
+        int packet_length;
+        bool finish = success=true;
+        int count;
+        IpPktFilter filter = (IpPktFilter)args;
+        OpenPipes();
+        while(Mode) {
+                if (feof(InPipe)==0) {
+                  if(finish){
+                    if(fread(&packet_length,sizeof(int),1,InPipe))
+                      success=true;
+                    if(isSuccess){
+                      isSuccess = true;
+                    }else{
+                      isSuccess=false;
+                    }
 
-   return NULL;
+                  }
+                  finish = ReadPacket(buffer,&count,&packet_length);
+                  bool block = false;
+                  switch(Mode){
+                    case MODE_BLOCK_ALL:
+                      block = true;
+                    break;
+                    case MODE_ALLOW_ALL:
+                      block = false;
+                    break;
+                    case MODE_FILTER:
+                      block = !FilterPacket(filter,buffer);
+                      break;
+                    default:
+                      break;
+                  }
+                  if (isBlocked!=true){
+                    fwrite(&packet_length,sizeof(int),1,OutPipe);
+                    fwrite(buffer,sizeof(char),packet_length,OutPipe);
+                    fflush(OutPipe);
+                    fflush(InPipe);
+                  }
+                  packet_length = packet_length - count;
+                }
+        }
+        fclose(InPipe);
+        fclose(OutPipe);
+        return NULL;
 }
 
 
- 
+
 /// Print a menu and a prompt to stdout
 static void DisplayMenu(void)
 {
-   printf("\n1. Block All\n");
-   printf("2. Allow All\n");
-   printf("3. Filter\n");
-   printf("0. Exit\n");
-   printf("> ");
+        printf("\n1. Block All\n");
+        printf("2. Allow All\n");
+        printf("3. Filter\n");
+        printf("0. Exit\n");
+        printf("> ");
 }
 
 
@@ -117,33 +163,48 @@ static void DisplayMenu(void)
 static bool OpenPipes(void)
 {
 
-   InPipe = fopen("ToFirewall", "rb");
-   if(InPipe == NULL)
-   {
-      perror("ERROR, failed to open pipe ToFirewall:");
-      return false;
-   }
+        InPipe = fopen("ToFirewall", "rb");
+        if(InPipe == NULL)
+        {
+                perror("ERROR, failed to open pipe ToFirewall:");
+                return false;
+        }
 
-   OutPipe = fopen("FromFirewall", "wb");
-   if(OutPipe == NULL)
-   {
-      perror("ERROR, failed to open pipe FromFirewall:");
-      return false;
-   }
+        OutPipe = fopen("FromFirewall", "wb");
+        if(OutPipe == NULL)
+        {
+                perror("ERROR, failed to open pipe FromFirewall:");
+                return false;
+        }
 
-   return true;
+        return true;
 }
+static bool ReadPacket(unsigned char* buf, int bufLength, int* len)
+{
+   // TODO: implement function
+   unsigned int bytes_rd;
+   bytes_rd = fread(buf, BYTE, bufLength, InPipe);
+   *len = bytes_rd;
+   if(bytes_rd > 0)
+   {
+	   return true;
+   }
 
+   return false;
+}
 
 /// Read an entire IP packet from the input pipe
 /// @param buf Destination buffer for storing the packet
 /// @param bufLength The length of the supplied destination buffer
 /// @param len The length of the packet
 /// @return True if a packet was successfully read
+
 static bool ReadPacket(unsigned char* buf, int bufLength, int* len)
 {
-   // TODO: implement function
+  unsigned int bytesRead;
+  bytesRead = fread(buf, sizeof(unsigned char), *len, InPipe);
 
-   return false;
+  bool isFinished = bytesRead == sizeof(unsigned char)*(*len);
+  *charsRead = bytesRead/sizeof(unsigned char);
+  return isFinished;
 }
-

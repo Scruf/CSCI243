@@ -87,7 +87,7 @@ IpPktFilter CreateFilter(void)
 {
    // TODO: implement function
 
-   return NULL; 
+   return NULL;
 }
 
 
@@ -109,7 +109,7 @@ void DestroyFilter(IpPktFilter filter)
 
 
 /// Configures a filter instance using the specified configuration file.
-/// Reads the file line by line and uses strtok, strcmp, and sscanf to 
+/// Reads the file line by line and uses strtok, strcmp, and sscanf to
 /// parse each line.  After each line is successfully parsed the result
 /// is stored in the filter.  Blank lines are skipped.  When the end of
 /// the file is encountered, the file is closed and the function returns.
@@ -127,10 +127,11 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
    unsigned int temp;
    unsigned int mask;
    unsigned int dstTcpPort;
- 
+   bool localNetFound = false;
+
    FilterConfig *fltCfg = (FilterConfig*)filter;
- 
-   pFile = fopen(filename, "r"); 
+
+   pFile = fopen(filename, "r");
    if(pFile == NULL)
    {
       printf("ERROR, invalid config file\n");
@@ -150,10 +151,11 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
       }
       else if( strcmp(pToken, "LOCAL_NET") == 0 )
       {
+         localNetFound = true;
          ParseRemainderOfStringForIp(ipAddr);
          temp = ConvertIpUIntOctetsToUInt(ipAddr);
          fltCfg->localIpAddr = temp;
-        
+
          pToken = strtok(NULL, "/");
          sscanf(pToken, "%u", &temp);
          mask = 0;
@@ -165,20 +167,39 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
          fltCfg->localMask = mask;
 
       }
+      else if ( strcmp(pToken, "BLOCK_INBOUND_TCP_PORT") == 0){
+         pToken = strtok(NULL, "/");
+         sscanf(pToken, "%u", &dstTcpPort);
+         AddBlockedInboundTcpPort(fltCfg, dstTcpPort);
 
-      // TODO: implement remainder of file parsing
-  }
+      }
+      else if ( strcmp(pToken, "BLOCK_PING_REQ") == 0 ){
+         fltCfg->blockInboundEchoReq = true;
+      }
+      else if (strcmp(pToken, "BLOCK_IP_ADDR") == 0){
+         ParseRemainderOfStringForIp(ipAddr);
+         temp = ConvertIpUIntOctetsToUInt(ipAddr);
+         AddBlockedIpAddress(fltCfg, temp);
+      }
 
- 
+// TODO: implement remainder of file parsing
+   }
+
+   fclose(pFile);
+
+   if ( ! localNetFound ){
+      printf("Error configuration file must set LOCAL_NET\n");
+      return false;
+   }
+
    return true;
 }
-
 
 /// Uses the settings specified by the filter instance to determine
 /// if a packet should be allowed or blocked.  The source and
 /// destination IP addresses are extracted from each packet and
 /// checked using the BlockIpAddress helper function. The IP protocol
-/// is extracted from the packet and if it is ICMP or TCP then 
+/// is extracted from the packet and if it is ICMP or TCP then
 /// additional processing occurs. This processing blocks inbound packets
 /// set to blocked TCP destination ports and inbound ICMP echo requests.
 /// @param filter The filter configuration to use
@@ -188,7 +209,20 @@ bool ConfigureFilter(IpPktFilter filter, char* filename)
 bool FilterPacket(IpPktFilter filter, unsigned char* pkt)
 {
    // TODO: implement function
- 
+   unsigned int dest_addr = ExtractDstAddrFromIpHeader(pkt);
+   unsigned int source_addr = ExtractSrcAddrFromIpHeader(pkt);
+   unsigned int protocol = ExtractIpProtocol(pkt);
+   unsigned int icmp_type = ExtractIcmpType(pkt);
+   unsigned int tcp_port = ExtractTcpDstPort(pkt);
+   bool is_blocked_source_addr = BlockIpAddress(filter,source_addr),is_blocked_dest_addr = BlockIpAddress(filter,dest_addr),is_blocked_tcp=BlockInboundTcpPort(filter,tcp_port);
+   if (is_blocked_source_addr || is_blocked_dest_addr)
+    return false;
+   else if(protocol==1 && icmp_type==8 && PacketIsInbound(filter,source_addr,dest_addr))
+     return false;
+   else if(protocol==6 && PacketIsInbound(filter,source_addr,dest_addr) && is_blocked_tcp)
+     return false;
+
+
    return true;
 }
 
@@ -200,7 +234,9 @@ bool FilterPacket(IpPktFilter filter, unsigned char* pkt)
 static bool BlockIpAddress(FilterConfig* fltCfg, unsigned int addr)
 {
    // TODO: implement function
-
+   for(unsigned int i=0;i<fltCfg->numBlockedIpAddresses;i++)
+    if(addr==fltCfg->blockedIpAddresses[i])
+      return true;
    return false;
 }
 
@@ -212,7 +248,9 @@ static bool BlockIpAddress(FilterConfig* fltCfg, unsigned int addr)
 static bool BlockInboundTcpPort(FilterConfig* fltCfg, unsigned int port)
 {
    // TODO: implement function
-
+   for(unsigned int i=0;i<fltCfg->numBlockedInboundTcpPorts;i++)
+    if(port==fltCfg->blockedInboundTcpPorts[i])
+      return true;
    return false;
 }
 
@@ -228,8 +266,11 @@ static bool BlockInboundTcpPort(FilterConfig* fltCfg, unsigned int port)
 static bool PacketIsInbound(FilterConfig* fltCfg, unsigned int srcIpAddr, unsigned int dstIpAddr)
 {
    // TODO: implement function
+   unsigned int localNetwork = fltCfg->localIpAddr & fltCfg->localMask;
 
-   return false;
+   // TODO: implement function
+   return (localNetwork != (srcIpAddr & fltCfg->localMask)) &
+          (localNetwork == (dstIpAddr & fltCfg->localMask));
 }
 
 
@@ -247,8 +288,8 @@ static void AddBlockedIpAddress(FilterConfig* fltCfg, unsigned int ipAddr)
       pTemp = (unsigned int*)malloc(sizeof(unsigned int));
    else
       pTemp = (unsigned int*)realloc( fltCfg->blockedIpAddresses, sizeof(unsigned int)*(num + 1) );
- 
-   assert(pTemp != NULL); 
+
+   assert(pTemp != NULL);
    fltCfg->blockedIpAddresses = pTemp;
    fltCfg->blockedIpAddresses[num] = ipAddr;
    fltCfg->numBlockedIpAddresses++;
@@ -269,15 +310,15 @@ static void AddBlockedInboundTcpPort(FilterConfig* fltCfg, unsigned int port)
       pTemp = (unsigned int*)malloc(sizeof(unsigned int));
    else
       pTemp = (unsigned int*)realloc( fltCfg->blockedInboundTcpPorts, sizeof(unsigned int)*(num + 1) );
- 
-   assert(pTemp != NULL); 
+
+   assert(pTemp != NULL);
    fltCfg->blockedInboundTcpPorts = pTemp;
    fltCfg->blockedInboundTcpPorts[num] = port;
    fltCfg->numBlockedInboundTcpPorts++;
 }
 
 
-/// Parses the remainder of the string last operated on by strtok 
+/// Parses the remainder of the string last operated on by strtok
 /// and converts each octet of the ASCII string IP address to an
 /// unsigned integer value.
 /// @param ipAddr The destination into which to store the octets
@@ -294,5 +335,3 @@ static void ParseRemainderOfStringForIp(unsigned int* ipAddr)
    pToken = strtok(NULL, "/");
    sscanf(pToken, "%u", &ipAddr[3]);
 }
-
-
