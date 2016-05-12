@@ -1,3 +1,322 @@
+commit 19260e889d37b678f9839a14c417ee7650e00921
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Wed May 11 22:36:00 2016 -0400
+
+    Final Commit
+
+commit 3d0acafc320a970b902d9d93f0ad9f3141759deb
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Wed May 11 22:03:42 2016 -0400
+
+    Fixed memory leak in Filter threads
+
+commit 1525ca3f696bc41563de0eaeaf6c17d263f80a6d
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Wed May 11 21:02:59 2016 -0400
+
+    Fixed Filter Isses
+
+commit 8ac2991443167c1a6b69aab87a693d302c66ddf8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue May 10 17:13:38 2016 -0400
+
+    Fixing memory leasks and conditional jumps
+
+commit 2a3ac927f7f7f88e9b0ad6e2c787ff67d720d7d6
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue May 10 15:46:34 2016 -0400
+
+    Fixing memory leaks
+
+commit 9cae3767d7ff5a701e78a9bc525fd6d684766a07
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue May 10 02:14:34 2016 -0400
+
+    fixing memory leaks
+
+commit 5b5d563019c1572778778f92d85d15aabdcc6ad1
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon May 9 11:57:55 2016 -0400
+
+    Firewall Project initial commit
+
+commit 3adb3b201469d67d394d407e41edf60911eeab2e
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu May 5 18:36:52 2016 -0400
+
+    revisions added
+
+commit 9a1c26a093db6cd90c50c7d201e45cf7a17afc52
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu May 5 18:35:00 2016 -0400
+
+    Brushing up some changes
+
+commit f923d9ed3f7cb19fe0133429d30261bac7d5f120
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu May 5 17:39:24 2016 -0400
+
+    Fixing memory issues
+
+commit 19019f99b8726e782b8a6fb20e3f471aaad33dab
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu May 5 16:41:38 2016 -0400
+
+    Finished make Racer
+
+commit b7f87ea33f5f24988b5057bd5e1fca3b8fd2aecd
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon May 2 19:14:43 2016 -0400
+
+    Added run script
+
+commit dfc6d2607c3c759a31cfcab502245daf8a2db394
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon May 2 12:04:47 2016 -0400
+
+    Partial Implementation of racer
+
+commit e08d1e137c7d279dd5740f7419f5938792c159f8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun May 1 19:43:55 2016 -0400
+
+    Added initial error checking
+
+commit 0eb548e3c46ae21af7a48e253a9070e97b0e314b
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun May 1 19:09:18 2016 -0400
+
+    HomeWork 8 initial commit
+
+commit 3520e72e2bef014a8dec2ffaa20b362ef1ec7571
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 25 20:32:41 2016 -0400
+
+    Log added
+
+commit 29c73aa57e6c924560393e09af4d08d15bc23b41
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 25 20:31:35 2016 -0400
+
+    Comments added
+
+commit 5bfdc0a16f497a0fc1336fff85f5b321fa6e2d4c
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 25 11:45:31 2016 -0400
+
+    optimizing dissectPackets
+
+commit 08f0501a6fb287c8e69d083297772d0c526dd623
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 14:06:23 2016 -0400
+
+    Added destination and source addresses
+
+commit 00edfe7ebfa51fb0aa3f8d06885c5f78499bae9a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 13:34:05 2016 -0400
+
+    Added Type of service and Header Length
+
+commit ed9511d633f2cadb801e5b6db9543d8b8af4ea1f
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 11:13:28 2016 -0400
+
+    Added packet version
+
+commit 3c3cf9420fa7e171e6deaff3b36bde9500e60b59
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 10:30:52 2016 -0400
+
+    Reading number of packets from packet file
+
+commit 4f7236b069712de3a9a4f9aa2e2917dbad79c30a
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 24 08:49:23 2016 -0400
+
+    Initial commit homework 7
+
+commit 38d170e90ecb3a9fef3d305dcbc965abd8e61a21
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 19 23:30:21 2016 -0400
+
+    comments added to Homework6
+
+commit ca4f24dfe1cd6d45c571a8579853b24e92f7180e
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 19 23:25:56 2016 -0400
+
+    Final Commit
+    3 blocks left
+
+commit 07195077aab8bd42b69d6bff0ffd1d0c151b80b7
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 19 22:37:25 2016 -0400
+
+    Found 3 unallocated blocks
+
+commit 860379145981a87470ed872d98e4e9771ddde6ed
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 19 22:31:43 2016 -0400
+
+    map delete function fixed
+
+commit 17188439b6cf4fe7b5fe9293adbe9e86219929ad
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 19 20:04:36 2016 -0400
+
+    Fixed loop issues
+
+commit 5821bf4a221583379be138066e5e5b0dffb9a65f
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 19 18:37:56 2016 -0400
+
+    Fixed wrong memory allocation in  create map
+
+commit 3005dd47398cfa2241d851ba6d81716f1b9087d7
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 18 22:57:02 2016 -0400
+
+    HomeWork 6 initial commit
+
+commit 57fb25a014903a7d18f7eb247645a1a6c82e60c5
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Apr 7 17:54:26 2016 -0400
+
+    Final Commit
+
+commit 709ff42dd9bff2dc08884e546284862a5f429eb8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Apr 7 17:48:31 2016 -0400
+
+    Finishing up with comments
+
+commit 1caa90698604f7074b4499986f300beae5dfa920
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Apr 7 15:54:38 2016 -0400
+
+    Fixed error with invalid file reading
+
+commit ac56cb30c40c08583cd99552f8db4cd182b129c8
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Apr 7 09:48:29 2016 -0400
+
+    InfixTree memory leak fixed
+
+commit 6a8d8799b2989919d81a4385a45ab4efde452af9
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Thu Apr 7 01:01:25 2016 -0400
+
+    Found bug in infixTree
+
+commit 1410da1b37e379c386ed870ff14374a9ee39464d
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Wed Apr 6 23:52:16 2016 -0400
+
+    Eval Tree finished
+
+commit edc057fe775f7360c1d22f4abc382cdc5b46f36c
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Wed Apr 6 15:06:44 2016 -0400
+
+    Symbol Table and partial implementation of parser completed
+
+commit a12365f2782e3352c9544c2287a605bfc0bbccbb
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 5 22:59:29 2016 -0400
+
+    Symbol Table fixed
+
+commit cb29de6d92d4d288695cb3a64de25efa540948d7
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Apr 5 22:39:36 2016 -0400
+
+    expNode not recognizing int bug fixed
+
+commit 3ca1155bdb9778328e9891ec385f7d5b959485c9
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 4 16:56:18 2016 -0700
+
+    Partial implmentation of parserTree and evalTree
+
+commit 6b5e142cad81c28b86f2613495f5892c730c5e85
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Mon Apr 4 16:23:56 2016 -0700
+
+    Infix tree Segmentation error fixed
+
+commit fdeb5898abb4fd0429721bfcf4b86b0a9c2cb907
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 3 15:56:15 2016 -0700
+
+    Partial Implementation of parser
+
+commit 7453a5f935c343b518245436540fe46acdda1791
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sun Apr 3 14:06:08 2016 -0700
+
+    expNode implementation finished and tested
+
+commit 92831e5b35e5a17d62006700eac98c1247ec8119
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sat Apr 2 15:34:32 2016 -0700
+
+    PArtial Implementation of expNode
+
+commit 968467267bb2933244ec5f4d3a0db9e157ddfb5d
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sat Apr 2 14:38:25 2016 -0700
+
+    Partial Implementation of Parser
+
+commit 633ec567123c7512813f18cffd2a47b0a86029f2
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sat Apr 2 13:16:34 2016 -0700
+
+    Fixed file checking condition
+
+commit 5c9b79c40646278cbbc7a34f5078c363cb36e594
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sat Apr 2 12:53:29 2016 -0700
+
+    Symbol Table error fixed
+
+commit 1d63ade6ac9d8da7c77b3066420e4a638f6d9924
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sat Apr 2 12:27:10 2016 -0700
+
+    Partial Implementation of Symbol table
+
+commit 998752f554d7f0a55a72c13a766ba5058d08ed95
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Sat Apr 2 11:45:26 2016 -0700
+
+    Partial Implementation of Symbol Table
+
+commit 5797788537b2e883d92887d67ce8d0a86a239320
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Mar 29 14:49:50 2016 -0700
+
+    Header for bst updated
+
+commit 55b1e87cbcacfae524074cf081191a603c42a476
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Mar 29 14:45:27 2016 -0700
+
+    Stack revised
+
+commit d586a1d4c08c6e0ad8f3eaeed9b8a6c781061d53
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Mar 29 13:40:20 2016 -0700
+
+    Stack fixed
+
+commit c8fefccfb1032864cf9da65bd66d2191f37e01cc
+Author: Scruf <ekozitski@hotmail.com>
+Date:   Tue Mar 29 13:32:21 2016 -0700
+
+    Partial Implementeation of stack finished
+
 commit 5de6f4c319116f42bba41dd6cf808de8121bfad4
 Author: Scruf <ekozitski@hotmail.com>
 Date:   Mon Mar 28 18:02:31 2016 -0700

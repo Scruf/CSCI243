@@ -1,41 +1,43 @@
-commit 29c73aa57e6c924560393e09af4d08d15bc23b41
+commit 19260e889d37b678f9839a14c417ee7650e00921
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Apr 25 20:31:35 2016 -0400
+Date:   Wed May 11 22:36:00 2016 -0400
 
-    Comments added
+    Final Commit
 
-commit 5bfdc0a16f497a0fc1336fff85f5b321fa6e2d4c
+commit 3d0acafc320a970b902d9d93f0ad9f3141759deb
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Mon Apr 25 11:45:31 2016 -0400
+Date:   Wed May 11 22:03:42 2016 -0400
 
-    optimizing dissectPackets
+    Fixed memory leak in Filter threads
 
-commit 08f0501a6fb287c8e69d083297772d0c526dd623
+commit 1525ca3f696bc41563de0eaeaf6c17d263f80a6d
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Apr 24 14:06:23 2016 -0400
+Date:   Wed May 11 21:02:59 2016 -0400
 
-    Added destination and source addresses
+    Fixed Filter Isses
 
-commit 00edfe7ebfa51fb0aa3f8d06885c5f78499bae9a
+commit 8ac2991443167c1a6b69aab87a693d302c66ddf8
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Apr 24 13:34:05 2016 -0400
+Date:   Tue May 10 17:13:38 2016 -0400
 
-    Added Type of service and Header Length
+    Fixing memory leasks and conditional jumps
 
-commit ed9511d633f2cadb801e5b6db9543d8b8af4ea1f
+commit 2a3ac927f7f7f88e9b0ad6e2c787ff67d720d7d6
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Apr 24 11:13:28 2016 -0400
+Date:   Tue May 10 15:46:34 2016 -0400
 
-    Added packet version
+    Fixing memory leaks
 
-commit 3c3cf9420fa7e171e6deaff3b36bde9500e60b59
+commit 9cae3767d7ff5a701e78a9bc525fd6d684766a07
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Apr 24 10:30:52 2016 -0400
+Date:   Tue May 10 02:14:34 2016 -0400
 
-    Reading number of packets from packet file
+    fixing memory leaks
 
-commit 4f7236b069712de3a9a4f9aa2e2917dbad79c30a
+commit 5b5d563019c1572778778f92d85d15aabdcc6ad1
 Author: Scruf <ekozitski@hotmail.com>
-Date:   Sun Apr 24 08:49:23 2016 -0400
+Date:   Mon May 9 11:57:55 2016 -0400
 
-    Initial commit homework 7
+    Firewall Project initial commit
+
+
