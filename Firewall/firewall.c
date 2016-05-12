@@ -12,8 +12,15 @@
 /// content of this file is protected as an unpublished work.
 ///
 /// Copyright 2015 Rochester Institute of Technology
-///Zahir Javaid
-///CS243
+/*
+===========================================================================
+ Name        : filter.c
+ Author      : Egor Kozitski
+ Version     :
+ Copyright   : Your copyright notice
+ Description :
+ ============================================================================
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
